@@ -39,8 +39,6 @@ export default function Dashboard() {
       <div>
         <Header showExplainerButton />
 
-        <SrensUnavailable />
-
         <Transition
           as={Fragment}
           show={isClientReady && showExplainer}

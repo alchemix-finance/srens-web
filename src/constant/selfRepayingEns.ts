@@ -163,7 +163,7 @@ const selfRepayingEnsABI = [
   { stateMutability: "payable", type: "receive" },
 ] as const
 
-export const selfRepayingEnsAddress = "0xef6274Eb92b55dA6D4BCE0b7D686f37064348aBB" as const
+export const selfRepayingEnsAddress = "0xF5fD2b9B29D0d8Fd7d11A0602581438C621ACB1a" as const
 
 export const selfRepayingEnsConfig = {
   address: selfRepayingEnsAddress,

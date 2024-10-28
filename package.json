@@ -16,44 +16,44 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.13",
-    "@headlessui/tailwindcss": "^0.1.2",
-    "@lukemorales/query-key-factory": "^1.2.0",
-    "@rainbow-me/rainbowkit": "^0.12.4",
-    "@tanstack/react-query": "^4.28.0",
-    "clsx": "^1.2.1",
-    "dayjs": "^1.11.7",
+    "@headlessui/react": "1.7.13",
+    "@headlessui/tailwindcss": "0.1.2",
+    "@lukemorales/query-key-factory": "1.2.0",
+    "@rainbow-me/rainbowkit": "0.12.4",
+    "@tanstack/react-query": "4.28.0",
+    "clsx": "1.2.1",
+    "dayjs": "1.11.7",
     "ethers": "5",
-    "next": "^13.2.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0",
-    "tailwind-merge": "^1.10.0",
-    "wagmi": "^0.12.6",
-    "zustand": "^4.3.6"
+    "next": "13.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "4.8.0",
+    "tailwind-merge": "1.10.0",
+    "wagmi": "0.12.6",
+    "zustand": "4.3.6"
   },
   "devDependencies": {
-    "@graphprotocol/client-cli": "^2.2.20",
-    "@svgr/webpack": "^6.5.1",
+    "@graphprotocol/client-cli": "2.2.20",
+    "@svgr/webpack": "6.5.1",
     "@types/node": "18.15.0",
-    "@types/react": "^18.0.28",
-    "@typescript-eslint/eslint-plugin": "^5.56.0",
-    "@typescript-eslint/parser": "^5.56.0",
-    "autoprefixer": "^10.4.13",
-    "cssnano": "^5.1.15",
-    "eslint": "^8.35.0",
-    "eslint-config-next": "^13.2.3",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.5.0",
-    "postcss": "^8.4.21",
-    "prettier": "^2.8.6",
-    "prettier-plugin-tailwindcss": "^0.1.13",
-    "tailwindcss": "^3.2.7",
-    "typescript": "^4.9.5",
-    "zod": "^3.21.4"
+    "@types/react": "18.0.28",
+    "@typescript-eslint/eslint-plugin": "5.56.0",
+    "@typescript-eslint/parser": "5.56.0",
+    "autoprefixer": "10.4.13",
+    "cssnano": "5.1.15",
+    "eslint": "8.35.0",
+    "eslint-config-next": "13.2.3",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "eslint-plugin-unused-imports": "2.0.0",
+    "husky": "7.0.4",
+    "lint-staged": "12.5.0",
+    "postcss": "8.4.21",
+    "prettier": "2.8.6",
+    "prettier-plugin-tailwindcss": "0.1.13",
+    "tailwindcss": "3.2.7",
+    "typescript": "4.9.5",
+    "zod": "3.21.4"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx} !.prettierrc.js": [
@@ -63,5 +63,6 @@
     "**/*.{json,css,scss,md,webmanifest}": [
       "prettier -w"
     ]
-  }
+  },
+  "packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c"
 }

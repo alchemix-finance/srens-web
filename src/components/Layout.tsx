@@ -14,6 +14,7 @@ import AlchemixLogo from "~/svg/alchemix_logo.svg"
 import Dune from "~/svg/dune.svg"
 import Etherscan from "~/svg/etherscan.svg"
 import SRENSLogo from "~/svg/srens_logo.svg"
+import { selfRepayingEnsAddress } from "@/constant"
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => (
   <div className="bg-alchemix grid min-h-screen grid-cols-1 grid-rows-[auto,1fr,auto]">{children}</div>
@@ -96,7 +97,7 @@ export const Footer: FC = () => (
         <li>
           <Link
             className="inline-flex items-center gap-2 rounded hover:text-white focus:outline-none focus-visible:ring-1 focus-visible:ring-bronze focus-visible:ring-offset-4 focus-visible:ring-offset-comet-800"
-            href="https://etherscan.io/address/0xef6274Eb92b55dA6D4BCE0b7D686f37064348aBB#code"
+            href={`https://etherscan.io/address/${selfRepayingEnsAddress}#code`}
             target="_blank"
           >
             <Etherscan className="h-5 w-5 fill-silver" />
