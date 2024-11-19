@@ -58,6 +58,6 @@ export const useSrensStore = create<SrensStore>()(
         // persist only the following properties
         showExplainer: state.showExplainer,
       }),
-    }
-  )
+    },
+  ),
 )

@@ -1,8 +1,7 @@
-import { BigNumber } from "ethers"
-import { formatUnits } from "ethers/lib/utils.js"
+import { formatEther } from "viem"
 
-export function formatLocaleUnits(value: BigNumber) {
+export function formatLocaleUnits(value: bigint) {
   return Intl.NumberFormat("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 3, notation: "compact" })
-    .format(Number(formatUnits(value)))
+    .format(Number(formatEther(value)))
     .toLocaleUpperCase()
 }

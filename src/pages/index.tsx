@@ -1,10 +1,3 @@
-import { Transition } from "@headlessui/react"
-import { Fragment } from "react"
-import { useAccount } from "wagmi"
-
-import { useIsClientReady } from "@/hooks"
-import { clsxm } from "@/lib"
-
 import {
   AccountOverview,
   CommitQueuedChanges,
@@ -21,9 +14,12 @@ import {
 } from "@/components"
 import { QueuedChangesModal } from "@/components/Modal"
 import { UnderCollateralizedModal } from "@/components/Modal/UnderCollateralizedModal"
-import { SrensUnavailable } from "@/components/SrensUnavailable"
-
+import { useIsClientReady } from "@/hooks"
+import { clsxm } from "@/lib"
 import { useSrensStore } from "@/store"
+import { Transition } from "@headlessui/react"
+import { Fragment } from "react"
+import { useAccount } from "wagmi"
 
 export default function Dashboard() {
   const isClientReady = useIsClientReady()

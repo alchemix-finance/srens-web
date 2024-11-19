@@ -24,7 +24,7 @@ export const MyDomains: FC = () => {
           <Spinner className="h-8 w-8" />
         </FallbackMessage>
       ) : !allDomains.data?.length ? (
-        <FallbackMessage variant="black">You don't own any domains</FallbackMessage>
+        <FallbackMessage variant="black">You don&apos;t own any domains</FallbackMessage>
       ) : (
         allDomains.data.map((domain) => (
           <Domain
@@ -39,3 +39,4 @@ export const MyDomains: FC = () => {
     </>
   )
 }
+MyDomains.displayName = "MyDomains"

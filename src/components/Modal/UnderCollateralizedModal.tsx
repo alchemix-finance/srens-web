@@ -13,7 +13,7 @@ export const UnderCollateralizedModal: FC = () => {
   return (
     <Modal name="underCollateralized">
       <header>
-        <SectionTitle className="text-white md:text-base">You're under collateralized</SectionTitle>
+        <SectionTitle className="text-white md:text-base">You&apos;re under collateralized</SectionTitle>
         <p className="text-sm text-comet-50 sm:text-base">
           Ensure you have some ETH deposited into Alchemix. Alchemix LTV is 50%, so make sure the borrowable amount is
           sufficient for at least a 1-year renewal.
@@ -37,3 +37,4 @@ export const UnderCollateralizedModal: FC = () => {
     </Modal>
   )
 }
+UnderCollateralizedModal.displayName = "UnderCollateralizedModal"

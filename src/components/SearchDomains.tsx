@@ -61,7 +61,7 @@ export const SearchDomains: FC = () => {
           placeholder="vitalik.eth"
         />
         <button
-          className="peer relative z-10 col-start-2 row-start-2 rounded px-4 text-sm uppercase text-comet-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-bronze focus-visible:ring-bronze focus-visible:ring-offset-4 focus-visible:ring-offset-comet-800 enabled:hover:underline disabled:opacity-0"
+          className="peer relative z-10 col-start-2 row-start-2 rounded px-4 text-sm uppercase text-comet-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-bronze focus-visible:ring-offset-4 focus-visible:ring-offset-comet-800 enabled:hover:underline disabled:opacity-0"
           disabled={!searchQuery && !submittedSearch}
           onClick={onClear}
           type="button"

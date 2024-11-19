@@ -5,7 +5,8 @@ const nextConfig = {
   },
   reactStrictMode: true,
   swcMinify: true,
-  webpack(config) {
+  webpack: (config) => {
+    // SVGR
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
@@ -19,7 +20,8 @@ const nextConfig = {
         },
       ],
     })
-
+    // https://github.com/WalletConnect/walletconnect-monorepo/issues/1908
+    config.externals.push("pino-pretty", "lokijs", "encoding")
     return config
   },
 }

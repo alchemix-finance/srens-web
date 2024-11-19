@@ -1,11 +1,10 @@
-import { BigNumber } from "ethers"
 import { FC } from "react"
 import { FaRegQuestionCircle } from "react-icons/fa"
 import { useAccount } from "wagmi"
 
+import { useAlchemistAccountMetrics, useIsClientReady, useSubscriptions } from "@/hooks"
 import { clsxm } from "@/lib"
 import { formatLocaleUnits } from "@/lib/formatLocaleUnits"
-import { useAlchemistAccountMetrics, useIsClientReady, useReadSubscriptions } from "@/hooks"
 
 import { Button } from "@/components/Button"
 import { PrettyLink } from "@/components/PrettyLink"
@@ -22,7 +21,7 @@ export const AccountOverview: FC<AccountOverviewProps> = ({ showAlchemixLink, sh
   const isClientReady = useIsClientReady()
   const { isConnected } = useAccount()
   const accountMetrics = useAlchemistAccountMetrics()
-  const subscriptions = useReadSubscriptions()
+  const { subscriptions } = useSubscriptions()
 
   const setModal = useSrensStore((store) => store.setModal)
 
@@ -37,7 +36,7 @@ export const AccountOverview: FC<AccountOverviewProps> = ({ showAlchemixLink, sh
         )}
       </div>
 
-      <div className="rounded md:border md:border-comet-600 md:bg-comet-700 md:py-1 md:px-2">
+      <div className="rounded md:border md:border-comet-600 md:bg-comet-700 md:px-2 md:py-1">
         <dl className="grid grid-cols-[1fr,max-content] text-sm leading-loose">
           <dt className="text-comet-50">Total deposit</dt>
           <dd className="text-right font-mono">
@@ -48,9 +47,9 @@ export const AccountOverview: FC<AccountOverviewProps> = ({ showAlchemixLink, sh
           <dt className="text-comet-50">Current debt</dt>
           <dd className="text-right font-mono">
             {isClientReady && accountMetrics.data?.totalDebt
-              ? accountMetrics.data.totalDebt.gte(0)
+              ? accountMetrics.data.totalDebt >= 0
                 ? `${formatLocaleUnits(accountMetrics.data.totalDebt)} ETH`
-                : `${formatLocaleUnits(BigNumber.from(0))} ETH`
+                : `${formatLocaleUnits(BigInt(0))} ETH`
               : "–"}
           </dd>
           <dt className="text-comet-50">Collateralization</dt>
@@ -61,11 +60,11 @@ export const AccountOverview: FC<AccountOverviewProps> = ({ showAlchemixLink, sh
             })}
           >
             {isClientReady && accountMetrics.data?.currCollatRatio
-              ? accountMetrics.data.totalDebt.gte(0) && accountMetrics.data.totalDeposited.gt(0)
+              ? accountMetrics.data.totalDebt >= 0 && accountMetrics.data.totalDeposited > 0
                 ? formatLocaleUnits(accountMetrics.data.currCollatRatio)
-                : accountMetrics.data.totalDeposited.gt(0)
-                ? "∞"
-                : "0.0"
+                : accountMetrics.data.totalDeposited > 0
+                  ? "∞"
+                  : "0.0"
               : "–"}
             {isClientReady && isConnected && !accountMetrics.data?.isCollateralized && showCollateralizationHelp && (
               <Button onClick={() => setModal("underCollateralized")}>

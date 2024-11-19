@@ -1,13 +1,8 @@
 import { FC } from "react"
 import { FiMinus, FiPlus, FiX } from "react-icons/fi"
 
+import { useAlchemistMintAllowance, useIsClientReady, useSubscriptions } from "@/hooks"
 import { clsxm } from "@/lib"
-import {
-  useIsClientReady,
-  useReadAlchemistMintAllowance,
-  useUpdateAlchemistMintAllowance,
-  useUpdateSubscriptions,
-} from "@/hooks"
 
 import { SectionTitle } from "@/components/SectionTitle"
 import { Spinner } from "@/components/Spinner"
@@ -63,26 +58,18 @@ export const CommitQueuedChanges: FC = () => {
   const setSearchQuery = useSrensStore((store) => store.setSearchQuery)
   const setSubmittedSearch = useSrensStore((store) => store.setSubmittedSearch)
 
-  const mintAllowance = useReadAlchemistMintAllowance()
-  const updateMintAllowance = useUpdateAlchemistMintAllowance()
-  const updateSubscriptions = useUpdateSubscriptions(() => {
+  const { allowance, updateAllowance } = useAlchemistMintAllowance()
+  const { updateSubscriptions } = useSubscriptions(() => {
     setModal(undefined)
     setSearchQuery("")
     setSubmittedSearch("")
   })
 
-  const onClickApprove = () => {
-    updateMintAllowance.write?.()
-  }
-  const onClickUpdate = () => {
-    updateSubscriptions.write?.()
-  }
-
   if (!isClientReady || !queuedCalls.length) return null
 
   return (
     <div>
-      {mintAllowance.data ? (
+      {allowance.data ? (
         <>
           <SectionTitle className="max-md:text-white">Update subscriptions</SectionTitle>
           <button
@@ -92,14 +79,14 @@ export const CommitQueuedChanges: FC = () => {
                 "cursor-wait opacity-50": updateSubscriptions.isWaiting,
                 "enabled:shadow-glow enabled:ring-1 enabled:ring-white/30 enabled:hover:bg-green-100 enabled:focus:outline-none enabled:focus-visible:ring-1 enabled:focus-visible:ring-bronze enabled:focus-visible:ring-offset-4 enabled:focus-visible:ring-offset-comet-800":
                   !updateSubscriptions.isWaiting,
-              }
+              },
             )}
-            disabled={updateSubscriptions.isLoading || updateSubscriptions.isWaiting}
-            onClick={onClickUpdate}
+            disabled={updateSubscriptions.isWaiting}
+            onClick={updateSubscriptions.write}
           >
             {updateSubscriptions.isWaiting ? "Updating subscriptions" : "Update subscriptions"}
             {updateSubscriptions.isWaiting && <Spinner className="h-5 w-5 fill-current md:h-4 md:w-4" />}
-            {!(updateSubscriptions.isLoading || updateSubscriptions.isWaiting) && (
+            {!updateSubscriptions.isWaiting && (
               <div aria-hidden="true" className="absolute inset-0 animate-ping rounded ring-1 ring-green" />
             )}
           </button>
@@ -114,17 +101,17 @@ export const CommitQueuedChanges: FC = () => {
             className={clsxm(
               "relative flex w-full items-center justify-center gap-3 rounded bg-green p-3 font-semibold text-comet-900 transition-colors md:text-sm",
               {
-                "cursor-wait opacity-50": updateMintAllowance.isWaiting,
-                "enabled:shadow-glow enabled:ring-1 enabled:ring-white/30 enabled:hover:bg-green-100 enabled:focus:outline-none  enabled:focus-visible:ring-1 enabled:focus-visible:ring-bronze enabled:focus-visible:ring-offset-4 enabled:focus-visible:ring-offset-comet-800":
-                  !updateMintAllowance.isWaiting,
-              }
+                "cursor-wait opacity-50": updateAllowance.isWaiting,
+                "enabled:shadow-glow enabled:ring-1 enabled:ring-white/30 enabled:hover:bg-green-100 enabled:focus:outline-none enabled:focus-visible:ring-1 enabled:focus-visible:ring-bronze enabled:focus-visible:ring-offset-4 enabled:focus-visible:ring-offset-comet-800":
+                  !updateAllowance.isWaiting,
+              },
             )}
-            disabled={updateMintAllowance.isLoading || updateMintAllowance.isWaiting}
-            onClick={onClickApprove}
+            disabled={updateAllowance.isWaiting}
+            onClick={updateAllowance.write}
           >
-            {updateMintAllowance.isWaiting ? "Approving" : "Approve"}
-            {updateMintAllowance.isWaiting && <Spinner className="h-5 w-5 fill-current md:h-4 md:w-4" />}
-            {!(updateSubscriptions.isLoading || updateSubscriptions.isWaiting) && (
+            {updateAllowance.isWaiting ? "Approving" : "Approve"}
+            {updateAllowance.isWaiting && <Spinner className="h-5 w-5 fill-current md:h-4 md:w-4" />}
+            {!updateAllowance.isWaiting && (
               <div aria-hidden="true" className="absolute inset-0 animate-ping rounded ring-1 ring-green" />
             )}
           </button>

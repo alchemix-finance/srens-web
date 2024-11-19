@@ -1,78 +1,98 @@
-import { ethers } from "ethers"
-import { useMemo } from "react"
-import {
-  Address,
-  useAccount,
-  useContractReads,
-  useContractWrite,
-  usePrepareContractWrite,
-  UserRejectedRequestError,
-  useWaitForTransaction,
-} from "wagmi"
-
-import { useSrensStore } from "@/store"
-
 import { selfRepayingEnsConfig } from "@/constant"
+import { useSrensStore } from "@/store"
+import { useCallback, useEffect } from "react"
+import { encodeFunctionData, UserRejectedRequestError } from "viem"
+import { useAccount, useReadContracts, useWaitForTransactionReceipt, useWriteContract } from "wagmi"
 
-export function useReadSubscriptions() {
-  const { address } = useAccount()
+export const useSubscriptions = (onSubscriptionsUpdated?: () => void) => {
+  const account = useAccount()
   const setToast = useSrensStore((store) => store.setToast)
-  return useContractReads({
+
+  const subscriptions = useReadContracts({
     contracts: [
-      { ...selfRepayingEnsConfig, functionName: "subscribedNames", args: [address ?? "0x"] },
-      { ...selfRepayingEnsConfig, functionName: "getTaskId", args: [address ?? "0x"] },
+      { ...selfRepayingEnsConfig, functionName: "subscribedNames", args: [account.address ?? "0x"] },
+      { ...selfRepayingEnsConfig, functionName: "getTaskId", args: [account.address ?? "0x"] },
     ],
-    enabled: !!address,
-    watch: true,
-    select: ([subscribedNames, taskId]) => ({ subscribedNames: subscribedNames.map((name) => `${name}.eth`), taskId }),
-    onError: () => setToast("error", "Error fetching subscriptions"),
+    query: {
+      enabled: !!account.address,
+      select: ([subscribedNames, taskId]) => ({
+        subscribedNames: subscribedNames.map((name) => `${name}.eth`),
+        taskId,
+      }),
+    },
+    allowFailure: false,
   })
-}
-
-export function useUpdateSubscriptions(onSuccess?: () => void) {
-  const queuedCalls = useSrensStore((store) => store.queuedCalls)
-  const dequeueAllCalls = useSrensStore((store) => store.dequeueAllCalls)
-  const setToast = useSrensStore((store) => store.setToast)
-
-  const contractInterface = useMemo(() => new ethers.utils.Interface(selfRepayingEnsConfig.abi), [])
-  const calldata = useMemo(
-    () =>
-      queuedCalls.map(
-        (change) =>
-          contractInterface.encodeFunctionData(change.type, [
-            change.name?.substring(0, change.name.indexOf(".eth")).toLowerCase(),
-          ]) as Address
-      ),
-    [queuedCalls, contractInterface]
+  useEffect(
+    () => {
+      if (subscriptions.status === "error") {
+        setToast("error", "Error fetching subscriptions")
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [subscriptions.status],
   )
 
-  const prepare = usePrepareContractWrite({
-    ...selfRepayingEnsConfig,
-    functionName: "multicall",
-    args: [calldata],
-    enabled: !!calldata.length,
-  })
-  const write = useContractWrite({
-    ...prepare.config,
-    onError: (err) =>
-      setToast("error", err instanceof UserRejectedRequestError ? "Request rejected" : "Transaction failed"),
-    onMutate: () => setToast("pending", "Waiting for signature"),
-    onSuccess: () => setToast("pending", "Waiting for confirmation"),
-  })
-  const wait = useWaitForTransaction({
-    hash: write.data?.hash,
-    onError: () => setToast("error", "Error updating subscriptions"),
-    onSuccess: () => {
-      setToast("success", "Subscriptions updated")
-      dequeueAllCalls()
-      onSuccess?.()
+  const { writeContract, ...mutation } = useWriteContract({
+    mutation: {
+      onError: (error) =>
+        setToast(
+          "error",
+          error instanceof UserRejectedRequestError || error.message.includes("User rejected the request")
+            ? "Request rejected"
+            : "Transaction failed",
+        ),
+      onSuccess: () => setToast("pending", "Waiting for confirmation"),
     },
   })
 
+  const queuedCalls = useSrensStore((store) => store.queuedCalls)
+  const dequeueAllCalls = useSrensStore((store) => store.dequeueAllCalls)
+  const updateSubscriptions = useCallback(
+    () => {
+      if (!queuedCalls.length) {
+        setToast("error", "No changes to update")
+        return
+      }
+      setToast("pending", "Waiting for signature")
+      const calldata = queuedCalls
+        .filter((change) => !!change.name)
+        .map((change) =>
+          encodeFunctionData({
+            abi: selfRepayingEnsConfig.abi,
+            functionName: change.type,
+            args: [change.name!.substring(0, change.name!.indexOf(".eth")).toLowerCase()],
+          }),
+        )
+      writeContract({ ...selfRepayingEnsConfig, functionName: "multicall", args: [calldata] })
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [writeContract, queuedCalls],
+  )
+
+  const receipt = useWaitForTransactionReceipt({ hash: mutation.data })
+  useEffect(
+    () => {
+      if (receipt.status === "error") {
+        setToast("error", "Transaction failed")
+        return
+      }
+      if (receipt.status === "success") {
+        setToast("success", "Subscriptions updated")
+        dequeueAllCalls()
+        onSubscriptionsUpdated?.()
+        subscriptions.refetch()
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [receipt.status],
+  )
+
   return {
-    isError: prepare.isError || write.isError,
-    isLoading: prepare.isLoading,
-    isWaiting: write.isLoading || wait.isLoading,
-    write: write.write,
+    subscriptions,
+    updateSubscriptions: {
+      write: updateSubscriptions,
+      isWaiting: mutation.isPending || receipt.isLoading,
+      isError: mutation.isError,
+    },
   }
 }

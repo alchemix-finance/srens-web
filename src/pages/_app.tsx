@@ -1,12 +1,11 @@
 import { darkTheme, RainbowKitProvider } from "@rainbow-me/rainbowkit"
+import "@rainbow-me/rainbowkit/styles.css"
 import { QueryClientProvider } from "@tanstack/react-query"
 import { AppProps } from "next/app"
-import { WagmiConfig } from "wagmi"
 
-import "@rainbow-me/rainbowkit/styles.css"
+import { config, montserrat, queryClient } from "@/lib"
 import "@/styles/globals.css"
-
-import { chains, montserrat, queryClient, wagmiClient } from "@/lib"
+import { WagmiProvider } from "wagmi"
 
 const alchemixTheme = {
   ...darkTheme(),
@@ -30,13 +29,13 @@ const alchemixTheme = {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className={`${montserrat.variable} font-sans`}>
-      <QueryClientProvider client={queryClient}>
-        <WagmiConfig client={wagmiClient}>
-          <RainbowKitProvider chains={chains} modalSize="compact" theme={alchemixTheme}>
+      <WagmiProvider config={config}>
+        <QueryClientProvider client={queryClient}>
+          <RainbowKitProvider modalSize="compact" theme={alchemixTheme}>
             <Component {...pageProps} />
           </RainbowKitProvider>
-        </WagmiConfig>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </WagmiProvider>
     </div>
   )
 }

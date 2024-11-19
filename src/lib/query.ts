@@ -1,6 +1,6 @@
 import { createQueryKeyStore } from "@lukemorales/query-key-factory"
 import { QueryClient } from "@tanstack/react-query"
-import { Address } from "wagmi"
+import type { Address } from "viem"
 
 import { getBuiltGraphSDK } from "../../.graphclient"
 

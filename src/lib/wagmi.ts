@@ -1,29 +1,17 @@
-import { getDefaultWallets } from "@rainbow-me/rainbowkit"
-import { configureChains, createClient } from "wagmi"
+import { getDefaultConfig } from "@rainbow-me/rainbowkit"
+import { fallback, http } from "wagmi"
 import { foundry, mainnet } from "wagmi/chains"
-import { infuraProvider } from "wagmi/providers/infura"
-import { jsonRpcProvider } from "wagmi/providers/jsonRpc"
 
 const isFoundryEnabled = process.env.NEXT_PUBLIC_ENABLE_FOUNDRY === "true"
 
-const { chains, provider, webSocketProvider } = configureChains(
-  [mainnet, ...(isFoundryEnabled ? [foundry] : [])],
-  [
-    infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_KEY ?? "" }),
-    jsonRpcProvider({ rpc: (_chain) => ({ http: "https://eth.llamarpc.com" }) }),
-  ]
-)
-
-const { connectors } = getDefaultWallets({
+export const config = getDefaultConfig({
   appName: "Self Repaying ENS",
-  chains,
+  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? "",
+  chains: [mainnet, ...(isFoundryEnabled ? [foundry] : [])],
+  transports: {
+    [mainnet.id]: fallback([
+      http(`https://mainnet.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`),
+      http("https://eth.llamarpc.com"),
+    ]),
+  },
 })
-
-export const wagmiClient = createClient({
-  autoConnect: true,
-  connectors,
-  provider,
-  webSocketProvider,
-})
-
-export { chains }

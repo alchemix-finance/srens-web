@@ -5,9 +5,9 @@ import localizedFormat from "dayjs/plugin/localizedFormat"
 import { FC } from "react"
 import { useAccount } from "wagmi"
 
-import { clsxm } from "@/lib"
-import { useAlchemistAccountMetrics, useReadSubscriptions } from "@/hooks"
+import { useAlchemistAccountMetrics, useSubscriptions } from "@/hooks"
 import { useBlockTimestamp } from "@/hooks/useBlockTimestamp"
+import { clsxm } from "@/lib"
 
 import { useSrensStore } from "@/store"
 
@@ -36,7 +36,7 @@ export const Domain: FC<DomainProps> = ({
   const nearestRenewalEvent = renewalEvents?.find((e) => Object.hasOwn(e, "blockNumber")) as RenewalEvent | undefined
 
   const renewalBlockDate = useBlockTimestamp(nearestRenewalEvent?.blockNumber)
-  const subscriptions = useReadSubscriptions()
+  const { subscriptions } = useSubscriptions()
   const queuedCall = useSrensStore((state) => state.queuedCalls.find((c) => c.name === name))
   const enqueueCall = useSrensStore((state) => state.enqueueCall)
   const dequeueCall = useSrensStore((state) => state.dequeueCall)

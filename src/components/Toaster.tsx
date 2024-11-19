@@ -10,7 +10,7 @@ import { useSrensStore } from "@/store"
 
 export const Toaster: FC = () => {
   const { address } = useAccount()
-  const timerRef = useRef<NodeJS.Timer>()
+  const timerRef = useRef<NodeJS.Timeout>()
   const toast = useSrensStore((store) => store.toast)
   const unsetToast = useSrensStore((store) => store.unsetToast)
 
@@ -19,7 +19,9 @@ export const Toaster: FC = () => {
       timerRef.current = setTimeout(unsetToast, 6000)
     }
     return () => {
-      clearTimeout(timerRef.current)
+      if (timerRef.current) {
+        clearTimeout(timerRef.current)
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toast])
@@ -49,7 +51,7 @@ export const Toaster: FC = () => {
             "bg-blue": toast?.status === "pending",
             "bg-green-300": toast?.status === "success",
             "bg-red": toast?.status === "error",
-          }
+          },
         )}
       >
         {toast?.message}

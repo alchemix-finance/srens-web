@@ -1,51 +1,68 @@
-import { ethers } from "ethers"
-import {
-  useAccount,
-  useContractRead,
-  useContractWrite,
-  usePrepareContractWrite,
-  UserRejectedRequestError,
-  useWaitForTransaction,
-} from "wagmi"
+import { useAccount, useReadContract, useWaitForTransactionReceipt, useWriteContract } from "wagmi"
 
 import { useSrensStore } from "@/store"
 
 import { alchemistConfig, selfRepayingEnsAddress } from "@/constant"
+import { useCallback, useEffect } from "react"
+import { maxUint256, UserRejectedRequestError } from "viem"
 
-export function useReadAlchemistMintAllowance() {
-  const { address } = useAccount()
-  return useContractRead({
+export const useAlchemistMintAllowance = () => {
+  const account = useAccount()
+  const setToast = useSrensStore((store) => store.setToast)
+
+  const allowance = useReadContract({
     ...alchemistConfig,
     functionName: "mintAllowance",
-    args: [address ?? "0x", selfRepayingEnsAddress],
-    enabled: !!address,
-    select: (data) => data.gt(0),
-    watch: true,
+    args: [account.address ?? "0x", selfRepayingEnsAddress],
+    query: {
+      enabled: !!account.address,
+      select: (data) => data > 0,
+    },
   })
-}
 
-export function useUpdateAlchemistMintAllowance() {
-  const setToast = useSrensStore((store) => store.setToast)
-  const prepare = usePrepareContractWrite({
-    ...alchemistConfig,
-    functionName: "approveMint",
-    args: [selfRepayingEnsAddress, ethers.constants.MaxUint256],
+  const { writeContract, ...mutation } = useWriteContract({
+    mutation: {
+      onError: (err) =>
+        err instanceof UserRejectedRequestError || err.message.includes("User rejected the request")
+          ? setToast("error", "Request rejected")
+          : setToast("error", "Transaction failed"),
+      onMutate: () => setToast("pending", "Waiting for signature"),
+      onSuccess: () => setToast("pending", "Waiting for confirmation"),
+    },
   })
-  const write = useContractWrite({
-    ...prepare.config,
-    onError: (err) => (err instanceof UserRejectedRequestError ? null : setToast("error", "Transaction failed")),
-    onMutate: () => setToast("pending", "Waiting for signature"),
-    onSuccess: () => setToast("pending", "Waiting for confirmation"),
-  })
-  const wait = useWaitForTransaction({
-    hash: write.data?.hash,
-    onError: () => setToast("error", "Error updating mint allowance"),
-    onSuccess: () => setToast("success", "Mint allowance updated"),
-  })
+  const updateAllowance = useCallback(
+    () =>
+      writeContract({
+        ...alchemistConfig,
+        functionName: "approveMint",
+        args: [selfRepayingEnsAddress, maxUint256],
+      }),
+    [writeContract],
+  )
+
+  const receipt = useWaitForTransactionReceipt({ hash: mutation.data })
+  useEffect(
+    () => {
+      if (receipt.status === "error") {
+        setToast("error", "Error updating mint allowance")
+        return
+      }
+      if (receipt.status === "success") {
+        allowance.refetch()
+        setToast("success", "Mint allowance updated")
+        return
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [receipt.status],
+  )
+
   return {
-    isError: prepare.isError || write.isError,
-    isLoading: prepare.isLoading,
-    isWaiting: write.isLoading || wait.isLoading,
-    write: write.write,
+    allowance,
+    updateAllowance: {
+      write: updateAllowance,
+      isError: mutation.isError || receipt.isError,
+      isWaiting: mutation.isPending || receipt.isLoading,
+    },
   }
 }

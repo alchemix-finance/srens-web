@@ -1,22 +1,23 @@
 import { ConnectButton as RainbowConnectButton } from "@rainbow-me/rainbowkit"
 import { FC, useEffect } from "react"
 import { FaWallet } from "react-icons/fa"
-import { useNetwork } from "wagmi"
 
-import { chains, clsxm } from "@/lib"
+import { clsxm } from "@/lib"
 
 import { HeaderButton } from "@/components/Button"
 
 import { useSrensStore } from "@/store"
+import { useAccount, useChains } from "wagmi"
 
 export const ConnectButton: FC = () => {
-  const { chain } = useNetwork()
+  const chains = useChains()
+  const account = useAccount()
 
   const dequeueAllCalls = useSrensStore((store) => store.dequeueAllCalls)
   useEffect(() => {
     dequeueAllCalls()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chain?.id])
+  }, [account.chainId])
 
   return (
     <RainbowConnectButton.Custom>
