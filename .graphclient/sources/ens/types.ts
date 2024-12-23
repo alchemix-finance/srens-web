@@ -19,13 +19,20 @@ export type Scalars = {
   BigDecimal: any;
   BigInt: any;
   Bytes: any;
+  Int8: any;
+  Timestamp: any;
 };
 
 export type AbiChanged = ResolverEvent & {
+  /** Concatenation of block number and log ID */
   id: Scalars['ID'];
+  /** Used to derive relationships to Resolvers */
   resolver: Resolver;
+  /** The block number at which the event was emitted */
   blockNumber: Scalars['Int'];
+  /** The transaction hash of the transaction in which the event was emitted */
   transactionID: Scalars['Bytes'];
+  /** The content type of the ABI change */
   contentType: Scalars['BigInt'];
 };
 
@@ -102,9 +109,13 @@ export type AbiChanged_orderBy =
   | 'contentType';
 
 export type Account = {
+  /** The unique identifier for the account */
   id: Scalars['ID'];
+  /** The domains owned by the account */
   domains: Array<Domain>;
+  /** The WrappedDomains owned by the account */
   wrappedDomains?: Maybe<Array<WrappedDomain>>;
+  /** The Registrations made by the account */
   registrations?: Maybe<Array<Registration>>;
 };
 
@@ -160,10 +171,15 @@ export type Account_orderBy =
   | 'registrations';
 
 export type AddrChanged = ResolverEvent & {
+  /** Unique identifier for this event */
   id: Scalars['ID'];
+  /** The resolver associated with this event */
   resolver: Resolver;
+  /** The block number at which this event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction ID for the transaction in which this event occurred */
   transactionID: Scalars['Bytes'];
+  /** The new address associated with the resolver */
   addr: Account;
 };
 
@@ -253,13 +269,24 @@ export type AddrChanged_orderBy =
   | 'addr'
   | 'addr__id';
 
+export type Aggregation_interval =
+  | 'hour'
+  | 'day';
+
 export type AuthorisationChanged = ResolverEvent & {
+  /** Unique identifier for this event */
   id: Scalars['ID'];
+  /** The resolver associated with this event */
   resolver: Resolver;
+  /** The block number at which the event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction hash associated with the event */
   transactionID: Scalars['Bytes'];
+  /** The owner of the authorisation */
   owner: Scalars['Bytes'];
+  /** The target of the authorisation */
   target: Scalars['Bytes'];
+  /** Whether the authorisation was added or removed */
   isAuthorized: Scalars['Boolean'];
 };
 
@@ -364,10 +391,15 @@ export type Block_height = {
 };
 
 export type ContenthashChanged = ResolverEvent & {
+  /** Concatenation of block number and log ID */
   id: Scalars['ID'];
+  /** Used to derive relationships to Resolvers */
   resolver: Resolver;
+  /** The block number where the event occurred */
   blockNumber: Scalars['Int'];
+  /** The ID of the transaction where the event occurred */
   transactionID: Scalars['Bytes'];
+  /** The new content hash for the domain */
   hash: Scalars['Bytes'];
 };
 
@@ -446,22 +478,44 @@ export type ContenthashChanged_orderBy =
   | 'hash';
 
 export type Domain = {
+  /** The namehash of the name */
   id: Scalars['ID'];
+  /** The human readable name, if known. Unknown portions replaced with hash in square brackets (eg, foo.[1234].eth) */
   name?: Maybe<Scalars['String']>;
+  /** The human readable label name (imported from CSV), if known */
   labelName?: Maybe<Scalars['String']>;
+  /** keccak256(labelName) */
   labelhash?: Maybe<Scalars['Bytes']>;
+  /** The namehash (id) of the parent name */
   parent?: Maybe<Domain>;
+  /** Can count domains from length of array */
   subdomains: Array<Domain>;
+  /** The number of subdomains */
   subdomainCount: Scalars['Int'];
+  /** Address logged from current resolver, if any */
   resolvedAddress?: Maybe<Account>;
-  owner: Account;
+  /** The resolver that controls the domain's settings */
   resolver?: Maybe<Resolver>;
+  /** The time-to-live (TTL) value of the domain's records */
   ttl?: Maybe<Scalars['BigInt']>;
+  /** Indicates whether the domain has been migrated to a new registrar */
   isMigrated: Scalars['Boolean'];
+  /** The time when the domain was created */
   createdAt: Scalars['BigInt'];
-  events: Array<DomainEvent>;
+  /** The account that owns the domain */
+  owner: Account;
+  /** The account that owns the ERC721 NFT for the domain */
+  registrant?: Maybe<Account>;
+  /** The account that owns the wrapped domain */
+  wrappedOwner?: Maybe<Account>;
+  /** The expiry date for the domain, from either the registration, or the wrapped domain if PCC is burned */
+  expiryDate?: Maybe<Scalars['BigInt']>;
+  /** The registration associated with the domain */
   registration?: Maybe<Registration>;
+  /** The wrapped domain associated with the domain */
   wrappedDomain?: Maybe<WrappedDomain>;
+  /** The events associated with the domain */
+  events: Array<DomainEvent>;
 };
 
 
@@ -483,9 +537,13 @@ export type DomaineventsArgs = {
 };
 
 export type DomainEvent = {
+  /** The unique identifier of the event */
   id: Scalars['ID'];
+  /** The domain name associated with the event */
   domain: Domain;
+  /** The block number at which the event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction hash of the transaction that triggered the event */
   transactionID: Scalars['Bytes'];
 };
 
@@ -554,6 +612,7 @@ export type DomainEvent_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'blockNumber'
   | 'transactionID';
 
@@ -667,27 +726,6 @@ export type Domain_filter = {
   resolvedAddress_not_ends_with?: InputMaybe<Scalars['String']>;
   resolvedAddress_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
   resolvedAddress_?: InputMaybe<Account_filter>;
-  owner?: InputMaybe<Scalars['String']>;
-  owner_not?: InputMaybe<Scalars['String']>;
-  owner_gt?: InputMaybe<Scalars['String']>;
-  owner_lt?: InputMaybe<Scalars['String']>;
-  owner_gte?: InputMaybe<Scalars['String']>;
-  owner_lte?: InputMaybe<Scalars['String']>;
-  owner_in?: InputMaybe<Array<Scalars['String']>>;
-  owner_not_in?: InputMaybe<Array<Scalars['String']>>;
-  owner_contains?: InputMaybe<Scalars['String']>;
-  owner_contains_nocase?: InputMaybe<Scalars['String']>;
-  owner_not_contains?: InputMaybe<Scalars['String']>;
-  owner_not_contains_nocase?: InputMaybe<Scalars['String']>;
-  owner_starts_with?: InputMaybe<Scalars['String']>;
-  owner_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  owner_not_starts_with?: InputMaybe<Scalars['String']>;
-  owner_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  owner_ends_with?: InputMaybe<Scalars['String']>;
-  owner_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  owner_not_ends_with?: InputMaybe<Scalars['String']>;
-  owner_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  owner_?: InputMaybe<Account_filter>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_not?: InputMaybe<Scalars['String']>;
   resolver_gt?: InputMaybe<Scalars['String']>;
@@ -729,9 +767,80 @@ export type Domain_filter = {
   createdAt_lte?: InputMaybe<Scalars['BigInt']>;
   createdAt_in?: InputMaybe<Array<Scalars['BigInt']>>;
   createdAt_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  events_?: InputMaybe<DomainEvent_filter>;
+  owner?: InputMaybe<Scalars['String']>;
+  owner_not?: InputMaybe<Scalars['String']>;
+  owner_gt?: InputMaybe<Scalars['String']>;
+  owner_lt?: InputMaybe<Scalars['String']>;
+  owner_gte?: InputMaybe<Scalars['String']>;
+  owner_lte?: InputMaybe<Scalars['String']>;
+  owner_in?: InputMaybe<Array<Scalars['String']>>;
+  owner_not_in?: InputMaybe<Array<Scalars['String']>>;
+  owner_contains?: InputMaybe<Scalars['String']>;
+  owner_contains_nocase?: InputMaybe<Scalars['String']>;
+  owner_not_contains?: InputMaybe<Scalars['String']>;
+  owner_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  owner_starts_with?: InputMaybe<Scalars['String']>;
+  owner_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  owner_not_starts_with?: InputMaybe<Scalars['String']>;
+  owner_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  owner_ends_with?: InputMaybe<Scalars['String']>;
+  owner_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  owner_not_ends_with?: InputMaybe<Scalars['String']>;
+  owner_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  owner_?: InputMaybe<Account_filter>;
+  registrant?: InputMaybe<Scalars['String']>;
+  registrant_not?: InputMaybe<Scalars['String']>;
+  registrant_gt?: InputMaybe<Scalars['String']>;
+  registrant_lt?: InputMaybe<Scalars['String']>;
+  registrant_gte?: InputMaybe<Scalars['String']>;
+  registrant_lte?: InputMaybe<Scalars['String']>;
+  registrant_in?: InputMaybe<Array<Scalars['String']>>;
+  registrant_not_in?: InputMaybe<Array<Scalars['String']>>;
+  registrant_contains?: InputMaybe<Scalars['String']>;
+  registrant_contains_nocase?: InputMaybe<Scalars['String']>;
+  registrant_not_contains?: InputMaybe<Scalars['String']>;
+  registrant_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  registrant_starts_with?: InputMaybe<Scalars['String']>;
+  registrant_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  registrant_not_starts_with?: InputMaybe<Scalars['String']>;
+  registrant_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  registrant_ends_with?: InputMaybe<Scalars['String']>;
+  registrant_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  registrant_not_ends_with?: InputMaybe<Scalars['String']>;
+  registrant_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  registrant_?: InputMaybe<Account_filter>;
+  wrappedOwner?: InputMaybe<Scalars['String']>;
+  wrappedOwner_not?: InputMaybe<Scalars['String']>;
+  wrappedOwner_gt?: InputMaybe<Scalars['String']>;
+  wrappedOwner_lt?: InputMaybe<Scalars['String']>;
+  wrappedOwner_gte?: InputMaybe<Scalars['String']>;
+  wrappedOwner_lte?: InputMaybe<Scalars['String']>;
+  wrappedOwner_in?: InputMaybe<Array<Scalars['String']>>;
+  wrappedOwner_not_in?: InputMaybe<Array<Scalars['String']>>;
+  wrappedOwner_contains?: InputMaybe<Scalars['String']>;
+  wrappedOwner_contains_nocase?: InputMaybe<Scalars['String']>;
+  wrappedOwner_not_contains?: InputMaybe<Scalars['String']>;
+  wrappedOwner_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  wrappedOwner_starts_with?: InputMaybe<Scalars['String']>;
+  wrappedOwner_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  wrappedOwner_not_starts_with?: InputMaybe<Scalars['String']>;
+  wrappedOwner_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  wrappedOwner_ends_with?: InputMaybe<Scalars['String']>;
+  wrappedOwner_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  wrappedOwner_not_ends_with?: InputMaybe<Scalars['String']>;
+  wrappedOwner_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  wrappedOwner_?: InputMaybe<Account_filter>;
+  expiryDate?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_not?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_gt?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_lt?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_gte?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_lte?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  expiryDate_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   registration_?: InputMaybe<Registration_filter>;
   wrappedDomain_?: InputMaybe<WrappedDomain_filter>;
+  events_?: InputMaybe<DomainEvent_filter>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
   and?: InputMaybe<Array<InputMaybe<Domain_filter>>>;
@@ -752,12 +861,11 @@ export type Domain_orderBy =
   | 'parent__ttl'
   | 'parent__isMigrated'
   | 'parent__createdAt'
+  | 'parent__expiryDate'
   | 'subdomains'
   | 'subdomainCount'
   | 'resolvedAddress'
   | 'resolvedAddress__id'
-  | 'owner'
-  | 'owner__id'
   | 'resolver'
   | 'resolver__id'
   | 'resolver__address'
@@ -765,7 +873,13 @@ export type Domain_orderBy =
   | 'ttl'
   | 'isMigrated'
   | 'createdAt'
-  | 'events'
+  | 'owner'
+  | 'owner__id'
+  | 'registrant'
+  | 'registrant__id'
+  | 'wrappedOwner'
+  | 'wrappedOwner__id'
+  | 'expiryDate'
   | 'registration'
   | 'registration__id'
   | 'registration__registrationDate'
@@ -776,15 +890,111 @@ export type Domain_orderBy =
   | 'wrappedDomain__id'
   | 'wrappedDomain__expiryDate'
   | 'wrappedDomain__fuses'
-  | 'wrappedDomain__labelName';
+  | 'wrappedDomain__name'
+  | 'events';
+
+export type ExpiryExtended = DomainEvent & {
+  /** The unique identifier of the event */
+  id: Scalars['ID'];
+  /** The domain name associated with the event */
+  domain: Domain;
+  /** The block number at which the event occurred */
+  blockNumber: Scalars['Int'];
+  /** The transaction hash of the transaction that triggered the event */
+  transactionID: Scalars['Bytes'];
+  /** The new expiry date associated with the domain after the extension event */
+  expiryDate: Scalars['BigInt'];
+};
+
+export type ExpiryExtended_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  domain?: InputMaybe<Scalars['String']>;
+  domain_not?: InputMaybe<Scalars['String']>;
+  domain_gt?: InputMaybe<Scalars['String']>;
+  domain_lt?: InputMaybe<Scalars['String']>;
+  domain_gte?: InputMaybe<Scalars['String']>;
+  domain_lte?: InputMaybe<Scalars['String']>;
+  domain_in?: InputMaybe<Array<Scalars['String']>>;
+  domain_not_in?: InputMaybe<Array<Scalars['String']>>;
+  domain_contains?: InputMaybe<Scalars['String']>;
+  domain_contains_nocase?: InputMaybe<Scalars['String']>;
+  domain_not_contains?: InputMaybe<Scalars['String']>;
+  domain_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  domain_starts_with?: InputMaybe<Scalars['String']>;
+  domain_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  domain_not_starts_with?: InputMaybe<Scalars['String']>;
+  domain_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  domain_ends_with?: InputMaybe<Scalars['String']>;
+  domain_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  domain_not_ends_with?: InputMaybe<Scalars['String']>;
+  domain_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  domain_?: InputMaybe<Domain_filter>;
+  blockNumber?: InputMaybe<Scalars['Int']>;
+  blockNumber_not?: InputMaybe<Scalars['Int']>;
+  blockNumber_gt?: InputMaybe<Scalars['Int']>;
+  blockNumber_lt?: InputMaybe<Scalars['Int']>;
+  blockNumber_gte?: InputMaybe<Scalars['Int']>;
+  blockNumber_lte?: InputMaybe<Scalars['Int']>;
+  blockNumber_in?: InputMaybe<Array<Scalars['Int']>>;
+  blockNumber_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  transactionID?: InputMaybe<Scalars['Bytes']>;
+  transactionID_not?: InputMaybe<Scalars['Bytes']>;
+  transactionID_gt?: InputMaybe<Scalars['Bytes']>;
+  transactionID_lt?: InputMaybe<Scalars['Bytes']>;
+  transactionID_gte?: InputMaybe<Scalars['Bytes']>;
+  transactionID_lte?: InputMaybe<Scalars['Bytes']>;
+  transactionID_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  transactionID_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  transactionID_contains?: InputMaybe<Scalars['Bytes']>;
+  transactionID_not_contains?: InputMaybe<Scalars['Bytes']>;
+  expiryDate?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_not?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_gt?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_lt?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_gte?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_lte?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  expiryDate_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<ExpiryExtended_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<ExpiryExtended_filter>>>;
+};
+
+export type ExpiryExtended_orderBy =
+  | 'id'
+  | 'domain'
+  | 'domain__id'
+  | 'domain__name'
+  | 'domain__labelName'
+  | 'domain__labelhash'
+  | 'domain__subdomainCount'
+  | 'domain__ttl'
+  | 'domain__isMigrated'
+  | 'domain__createdAt'
+  | 'domain__expiryDate'
+  | 'blockNumber'
+  | 'transactionID'
+  | 'expiryDate';
 
 export type FusesSet = DomainEvent & {
+  /** The unique identifier of the event */
   id: Scalars['ID'];
+  /** The domain name associated with the event */
   domain: Domain;
+  /** The block number at which the event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction hash of the transaction that triggered the event */
   transactionID: Scalars['Bytes'];
-  fuses: Scalars['BigInt'];
-  expiry: Scalars['BigInt'];
+  /** The number of fuses associated with the domain after the set event */
+  fuses: Scalars['Int'];
 };
 
 export type FusesSet_filter = {
@@ -835,22 +1045,14 @@ export type FusesSet_filter = {
   transactionID_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
   transactionID_contains?: InputMaybe<Scalars['Bytes']>;
   transactionID_not_contains?: InputMaybe<Scalars['Bytes']>;
-  fuses?: InputMaybe<Scalars['BigInt']>;
-  fuses_not?: InputMaybe<Scalars['BigInt']>;
-  fuses_gt?: InputMaybe<Scalars['BigInt']>;
-  fuses_lt?: InputMaybe<Scalars['BigInt']>;
-  fuses_gte?: InputMaybe<Scalars['BigInt']>;
-  fuses_lte?: InputMaybe<Scalars['BigInt']>;
-  fuses_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  fuses_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  expiry?: InputMaybe<Scalars['BigInt']>;
-  expiry_not?: InputMaybe<Scalars['BigInt']>;
-  expiry_gt?: InputMaybe<Scalars['BigInt']>;
-  expiry_lt?: InputMaybe<Scalars['BigInt']>;
-  expiry_gte?: InputMaybe<Scalars['BigInt']>;
-  expiry_lte?: InputMaybe<Scalars['BigInt']>;
-  expiry_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  expiry_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  fuses?: InputMaybe<Scalars['Int']>;
+  fuses_not?: InputMaybe<Scalars['Int']>;
+  fuses_gt?: InputMaybe<Scalars['Int']>;
+  fuses_lt?: InputMaybe<Scalars['Int']>;
+  fuses_gte?: InputMaybe<Scalars['Int']>;
+  fuses_lte?: InputMaybe<Scalars['Int']>;
+  fuses_in?: InputMaybe<Array<Scalars['Int']>>;
+  fuses_not_in?: InputMaybe<Array<Scalars['Int']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
   and?: InputMaybe<Array<InputMaybe<FusesSet_filter>>>;
@@ -868,17 +1070,23 @@ export type FusesSet_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'blockNumber'
   | 'transactionID'
-  | 'fuses'
-  | 'expiry';
+  | 'fuses';
 
 export type InterfaceChanged = ResolverEvent & {
+  /** Concatenation of block number and log ID */
   id: Scalars['ID'];
+  /** Used to derive relationships to Resolvers */
   resolver: Resolver;
+  /** The block number in which the event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction ID for the transaction in which the event occurred */
   transactionID: Scalars['Bytes'];
+  /** The ID of the EIP-1820 interface that was changed */
   interfaceID: Scalars['Bytes'];
+  /** The address of the contract that implements the interface */
   implementer: Scalars['Bytes'];
 };
 
@@ -968,11 +1176,17 @@ export type InterfaceChanged_orderBy =
   | 'implementer';
 
 export type MulticoinAddrChanged = ResolverEvent & {
+  /** Unique identifier for the event */
   id: Scalars['ID'];
+  /** Resolver associated with this event */
   resolver: Resolver;
+  /** Block number in which this event was emitted */
   blockNumber: Scalars['Int'];
+  /** Transaction ID in which this event was emitted */
   transactionID: Scalars['Bytes'];
+  /** The coin type of the changed address */
   coinType: Scalars['BigInt'];
+  /** The new address value for the given coin type */
   addr: Scalars['Bytes'];
 };
 
@@ -1060,10 +1274,15 @@ export type MulticoinAddrChanged_orderBy =
   | 'addr';
 
 export type NameChanged = ResolverEvent & {
+  /** Concatenation of block number and log ID */
   id: Scalars['ID'];
+  /** Used to derive relationships to Resolvers */
   resolver: Resolver;
+  /** Block number where event occurred */
   blockNumber: Scalars['Int'];
+  /** Unique transaction ID where event occurred */
   transactionID: Scalars['Bytes'];
+  /** New ENS name value */
   name: Scalars['String'];
 };
 
@@ -1152,11 +1371,17 @@ export type NameChanged_orderBy =
   | 'name';
 
 export type NameRegistered = RegistrationEvent & {
+  /** The unique identifier of the NameRegistered event */
   id: Scalars['ID'];
+  /** The registration associated with the event */
   registration: Registration;
+  /** The block number of the event */
   blockNumber: Scalars['Int'];
+  /** The transaction ID associated with the event */
   transactionID: Scalars['Bytes'];
+  /** The account that registered the name */
   registrant: Account;
+  /** The expiry date of the registration */
   expiryDate: Scalars['BigInt'];
 };
 
@@ -1258,10 +1483,15 @@ export type NameRegistered_orderBy =
   | 'expiryDate';
 
 export type NameRenewed = RegistrationEvent & {
+  /** The unique identifier of the NameRenewed event */
   id: Scalars['ID'];
+  /** The registration associated with the event */
   registration: Registration;
+  /** The block number of the event */
   blockNumber: Scalars['Int'];
+  /** The transaction ID associated with the event */
   transactionID: Scalars['Bytes'];
+  /** The new expiry date of the registration */
   expiryDate: Scalars['BigInt'];
 };
 
@@ -1340,10 +1570,15 @@ export type NameRenewed_orderBy =
   | 'expiryDate';
 
 export type NameTransferred = RegistrationEvent & {
+  /** The ID of the event */
   id: Scalars['ID'];
+  /** The registration associated with the event */
   registration: Registration;
+  /** The block number of the event */
   blockNumber: Scalars['Int'];
+  /** The transaction ID of the event */
   transactionID: Scalars['Bytes'];
+  /** The new owner of the domain */
   newOwner: Account;
 };
 
@@ -1436,10 +1671,15 @@ export type NameTransferred_orderBy =
   | 'newOwner__id';
 
 export type NameUnwrapped = DomainEvent & {
+  /** The unique identifier of the event */
   id: Scalars['ID'];
+  /** The domain name associated with the event */
   domain: Domain;
+  /** The block number at which the event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction hash of the transaction that triggered the event */
   transactionID: Scalars['Bytes'];
+  /** The account that owns the domain after it was unwrapped */
   owner: Account;
 };
 
@@ -1529,20 +1769,29 @@ export type NameUnwrapped_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'blockNumber'
   | 'transactionID'
   | 'owner'
   | 'owner__id';
 
 export type NameWrapped = DomainEvent & {
+  /** The unique identifier of the wrapped domain */
   id: Scalars['ID'];
+  /** The domain name associated with the wrapped domain */
   domain: Domain;
+  /** The block number at which the wrapped domain was wrapped */
   blockNumber: Scalars['Int'];
+  /** The transaction hash of the transaction that wrapped the domain */
   transactionID: Scalars['Bytes'];
-  name: Scalars['String'];
-  fuses: Scalars['BigInt'];
+  /** The human-readable name of the wrapped domain */
+  name?: Maybe<Scalars['String']>;
+  /** The number of fuses associated with the wrapped domain */
+  fuses: Scalars['Int'];
+  /** The account that owns the wrapped domain */
   owner: Account;
-  expiry: Scalars['BigInt'];
+  /** The expiry date of the wrapped domain registration */
+  expiryDate: Scalars['BigInt'];
 };
 
 export type NameWrapped_filter = {
@@ -1613,14 +1862,14 @@ export type NameWrapped_filter = {
   name_ends_with_nocase?: InputMaybe<Scalars['String']>;
   name_not_ends_with?: InputMaybe<Scalars['String']>;
   name_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  fuses?: InputMaybe<Scalars['BigInt']>;
-  fuses_not?: InputMaybe<Scalars['BigInt']>;
-  fuses_gt?: InputMaybe<Scalars['BigInt']>;
-  fuses_lt?: InputMaybe<Scalars['BigInt']>;
-  fuses_gte?: InputMaybe<Scalars['BigInt']>;
-  fuses_lte?: InputMaybe<Scalars['BigInt']>;
-  fuses_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  fuses_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  fuses?: InputMaybe<Scalars['Int']>;
+  fuses_not?: InputMaybe<Scalars['Int']>;
+  fuses_gt?: InputMaybe<Scalars['Int']>;
+  fuses_lt?: InputMaybe<Scalars['Int']>;
+  fuses_gte?: InputMaybe<Scalars['Int']>;
+  fuses_lte?: InputMaybe<Scalars['Int']>;
+  fuses_in?: InputMaybe<Array<Scalars['Int']>>;
+  fuses_not_in?: InputMaybe<Array<Scalars['Int']>>;
   owner?: InputMaybe<Scalars['String']>;
   owner_not?: InputMaybe<Scalars['String']>;
   owner_gt?: InputMaybe<Scalars['String']>;
@@ -1642,14 +1891,14 @@ export type NameWrapped_filter = {
   owner_not_ends_with?: InputMaybe<Scalars['String']>;
   owner_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
   owner_?: InputMaybe<Account_filter>;
-  expiry?: InputMaybe<Scalars['BigInt']>;
-  expiry_not?: InputMaybe<Scalars['BigInt']>;
-  expiry_gt?: InputMaybe<Scalars['BigInt']>;
-  expiry_lt?: InputMaybe<Scalars['BigInt']>;
-  expiry_gte?: InputMaybe<Scalars['BigInt']>;
-  expiry_lte?: InputMaybe<Scalars['BigInt']>;
-  expiry_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  expiry_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  expiryDate?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_not?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_gt?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_lt?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_gte?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_lte?: InputMaybe<Scalars['BigInt']>;
+  expiryDate_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  expiryDate_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
   and?: InputMaybe<Array<InputMaybe<NameWrapped_filter>>>;
@@ -1667,20 +1916,27 @@ export type NameWrapped_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'blockNumber'
   | 'transactionID'
   | 'name'
   | 'fuses'
   | 'owner'
   | 'owner__id'
-  | 'expiry';
+  | 'expiryDate';
 
 export type NewOwner = DomainEvent & {
+  /** The unique identifier of the event */
   id: Scalars['ID'];
+  /** The parent domain of the domain name associated with the event */
   parentDomain: Domain;
+  /** The domain name associated with the event */
   domain: Domain;
+  /** The block number at which the event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction hash of the transaction that triggered the event */
   transactionID: Scalars['Bytes'];
+  /** The new account that owns the domain */
   owner: Account;
 };
 
@@ -1791,6 +2047,7 @@ export type NewOwner_orderBy =
   | 'parentDomain__ttl'
   | 'parentDomain__isMigrated'
   | 'parentDomain__createdAt'
+  | 'parentDomain__expiryDate'
   | 'domain'
   | 'domain__id'
   | 'domain__name'
@@ -1800,16 +2057,22 @@ export type NewOwner_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'blockNumber'
   | 'transactionID'
   | 'owner'
   | 'owner__id';
 
 export type NewResolver = DomainEvent & {
+  /** The unique identifier of the event */
   id: Scalars['ID'];
+  /** The domain name associated with the event */
   domain: Domain;
+  /** The block number at which the event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction hash of the transaction that triggered the event */
   transactionID: Scalars['Bytes'];
+  /** The new resolver contract address associated with the domain */
   resolver: Resolver;
 };
 
@@ -1899,6 +2162,7 @@ export type NewResolver_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'blockNumber'
   | 'transactionID'
   | 'resolver'
@@ -1907,10 +2171,15 @@ export type NewResolver_orderBy =
   | 'resolver__contentHash';
 
 export type NewTTL = DomainEvent & {
+  /** The unique identifier of the event */
   id: Scalars['ID'];
+  /** The domain name associated with the event */
   domain: Domain;
+  /** The block number at which the event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction hash of the transaction that triggered the event */
   transactionID: Scalars['Bytes'];
+  /** The new TTL value (in seconds) associated with the domain */
   ttl: Scalars['BigInt'];
 };
 
@@ -1987,6 +2256,7 @@ export type NewTTL_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'blockNumber'
   | 'transactionID'
   | 'ttl';
@@ -1997,11 +2267,17 @@ export type OrderDirection =
   | 'desc';
 
 export type PubkeyChanged = ResolverEvent & {
+  /** Concatenation of block number and log ID */
   id: Scalars['ID'];
+  /** Used to derive relationships to Resolvers */
   resolver: Resolver;
+  /** Block number of the Ethereum block where the event occurred */
   blockNumber: Scalars['Int'];
+  /** Transaction hash of the Ethereum transaction where the event occurred */
   transactionID: Scalars['Bytes'];
+  /** The x-coordinate of the new public key */
   x: Scalars['Bytes'];
+  /** The y-coordinate of the new public key */
   y: Scalars['Bytes'];
 };
 
@@ -2109,6 +2385,8 @@ export type Query = {
   nameUnwrappeds: Array<NameUnwrapped>;
   fusesSet?: Maybe<FusesSet>;
   fusesSets: Array<FusesSet>;
+  expiryExtended?: Maybe<ExpiryExtended>;
+  expiryExtendeds: Array<ExpiryExtended>;
   registration?: Maybe<Registration>;
   registrations: Array<Registration>;
   nameRegistered?: Maybe<NameRegistered>;
@@ -2311,6 +2589,24 @@ export type QueryfusesSetsArgs = {
   orderBy?: InputMaybe<FusesSet_orderBy>;
   orderDirection?: InputMaybe<OrderDirection>;
   where?: InputMaybe<FusesSet_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryexpiryExtendedArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryexpiryExtendedsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<ExpiryExtended_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<ExpiryExtended_filter>;
   block?: InputMaybe<Block_height>;
   subgraphError?: _SubgraphErrorPolicy_;
 };
@@ -2681,13 +2977,21 @@ export type Query_metaArgs = {
 };
 
 export type Registration = {
+  /** The unique identifier of the registration */
   id: Scalars['ID'];
+  /** The domain name associated with the registration */
   domain: Domain;
+  /** The registration date of the domain */
   registrationDate: Scalars['BigInt'];
+  /** The expiry date of the domain */
   expiryDate: Scalars['BigInt'];
+  /** The cost associated with the domain registration */
   cost?: Maybe<Scalars['BigInt']>;
+  /** The account that registered the domain */
   registrant: Account;
+  /** The human-readable label name associated with the domain registration */
   labelName?: Maybe<Scalars['String']>;
+  /** The events associated with the domain registration */
   events: Array<RegistrationEvent>;
 };
 
@@ -2701,9 +3005,13 @@ export type RegistrationeventsArgs = {
 };
 
 export type RegistrationEvent = {
+  /** The unique identifier of the registration event */
   id: Scalars['ID'];
+  /** The registration associated with the event */
   registration: Registration;
+  /** The block number of the event */
   blockNumber: Scalars['Int'];
+  /** The transaction ID associated with the event */
   transactionID: Scalars['Bytes'];
 };
 
@@ -2885,6 +3193,7 @@ export type Registration_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'registrationDate'
   | 'expiryDate'
   | 'cost'
@@ -2894,13 +3203,21 @@ export type Registration_orderBy =
   | 'events';
 
 export type Resolver = {
+  /** The unique identifier for this resolver, which is a concatenation of the resolver address and the domain namehash */
   id: Scalars['ID'];
+  /** The domain that this resolver is associated with */
   domain?: Maybe<Domain>;
+  /** The address of the resolver contract */
   address: Scalars['Bytes'];
+  /** The current value of the 'addr' record for this resolver, as determined by the associated events */
   addr?: Maybe<Account>;
+  /** The content hash for this resolver, in binary format */
   contentHash?: Maybe<Scalars['Bytes']>;
+  /** The set of observed text record keys for this resolver */
   texts?: Maybe<Array<Scalars['String']>>;
+  /** The set of observed SLIP-44 coin types for this resolver */
   coinTypes?: Maybe<Array<Scalars['BigInt']>>;
+  /** The events associated with this resolver */
   events: Array<ResolverEvent>;
 };
 
@@ -2914,9 +3231,13 @@ export type ResolvereventsArgs = {
 };
 
 export type ResolverEvent = {
+  /** Concatenation of block number and log ID */
   id: Scalars['ID'];
+  /** Used to derive relationships to Resolvers */
   resolver: Resolver;
+  /** The block number that the event occurred on */
   blockNumber: Scalars['Int'];
+  /** The transaction hash of the event */
   transactionID: Scalars['Bytes'];
 };
 
@@ -3084,6 +3405,7 @@ export type Resolver_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'address'
   | 'addr'
   | 'addr__id'
@@ -3111,6 +3433,8 @@ export type Subscription = {
   nameUnwrappeds: Array<NameUnwrapped>;
   fusesSet?: Maybe<FusesSet>;
   fusesSets: Array<FusesSet>;
+  expiryExtended?: Maybe<ExpiryExtended>;
+  expiryExtendeds: Array<ExpiryExtended>;
   registration?: Maybe<Registration>;
   registrations: Array<Registration>;
   nameRegistered?: Maybe<NameRegistered>;
@@ -3313,6 +3637,24 @@ export type SubscriptionfusesSetsArgs = {
   orderBy?: InputMaybe<FusesSet_orderBy>;
   orderDirection?: InputMaybe<OrderDirection>;
   where?: InputMaybe<FusesSet_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionexpiryExtendedArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionexpiryExtendedsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<ExpiryExtended_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<ExpiryExtended_filter>;
   block?: InputMaybe<Block_height>;
   subgraphError?: _SubgraphErrorPolicy_;
 };
@@ -3683,11 +4025,17 @@ export type Subscription_metaArgs = {
 };
 
 export type TextChanged = ResolverEvent & {
+  /** Concatenation of block number and log ID */
   id: Scalars['ID'];
+  /** Used to derive relationships to Resolvers */
   resolver: Resolver;
+  /** Block number of the Ethereum block in which the event occurred */
   blockNumber: Scalars['Int'];
+  /** Hash of the Ethereum transaction in which the event occurred */
   transactionID: Scalars['Bytes'];
+  /** The key of the text record that was changed */
   key: Scalars['String'];
+  /** The new value of the text record that was changed */
   value?: Maybe<Scalars['String']>;
 };
 
@@ -3797,10 +4145,15 @@ export type TextChanged_orderBy =
   | 'value';
 
 export type Transfer = DomainEvent & {
+  /** The unique identifier of the event */
   id: Scalars['ID'];
+  /** The domain name associated with the event */
   domain: Domain;
+  /** The block number at which the event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction hash of the transaction that triggered the event */
   transactionID: Scalars['Bytes'];
+  /** The account that owns the domain after the transfer */
   owner: Account;
 };
 
@@ -3890,16 +4243,22 @@ export type Transfer_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'blockNumber'
   | 'transactionID'
   | 'owner'
   | 'owner__id';
 
 export type VersionChanged = ResolverEvent & {
+  /** Unique identifier for this event */
   id: Scalars['ID'];
+  /** The resolver associated with this event */
   resolver: Resolver;
+  /** The block number at which the event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction hash associated with the event */
   transactionID: Scalars['Bytes'];
+  /** The new version number of the resolver */
   version: Scalars['BigInt'];
 };
 
@@ -3976,12 +4335,18 @@ export type VersionChanged_orderBy =
   | 'version';
 
 export type WrappedDomain = {
+  /** unique identifier for each instance of the WrappedDomain entity */
   id: Scalars['ID'];
+  /** The domain that is wrapped by this WrappedDomain */
   domain: Domain;
+  /** The expiry date of the wrapped domain */
   expiryDate: Scalars['BigInt'];
-  fuses: Scalars['BigInt'];
+  /** The number of fuses remaining on the wrapped domain */
+  fuses: Scalars['Int'];
+  /** The account that owns this WrappedDomain */
   owner: Account;
-  labelName?: Maybe<Scalars['String']>;
+  /** The name of the wrapped domain */
+  name?: Maybe<Scalars['String']>;
 };
 
 export type WrappedDomain_filter = {
@@ -4022,14 +4387,14 @@ export type WrappedDomain_filter = {
   expiryDate_lte?: InputMaybe<Scalars['BigInt']>;
   expiryDate_in?: InputMaybe<Array<Scalars['BigInt']>>;
   expiryDate_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  fuses?: InputMaybe<Scalars['BigInt']>;
-  fuses_not?: InputMaybe<Scalars['BigInt']>;
-  fuses_gt?: InputMaybe<Scalars['BigInt']>;
-  fuses_lt?: InputMaybe<Scalars['BigInt']>;
-  fuses_gte?: InputMaybe<Scalars['BigInt']>;
-  fuses_lte?: InputMaybe<Scalars['BigInt']>;
-  fuses_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  fuses_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  fuses?: InputMaybe<Scalars['Int']>;
+  fuses_not?: InputMaybe<Scalars['Int']>;
+  fuses_gt?: InputMaybe<Scalars['Int']>;
+  fuses_lt?: InputMaybe<Scalars['Int']>;
+  fuses_gte?: InputMaybe<Scalars['Int']>;
+  fuses_lte?: InputMaybe<Scalars['Int']>;
+  fuses_in?: InputMaybe<Array<Scalars['Int']>>;
+  fuses_not_in?: InputMaybe<Array<Scalars['Int']>>;
   owner?: InputMaybe<Scalars['String']>;
   owner_not?: InputMaybe<Scalars['String']>;
   owner_gt?: InputMaybe<Scalars['String']>;
@@ -4051,26 +4416,26 @@ export type WrappedDomain_filter = {
   owner_not_ends_with?: InputMaybe<Scalars['String']>;
   owner_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
   owner_?: InputMaybe<Account_filter>;
-  labelName?: InputMaybe<Scalars['String']>;
-  labelName_not?: InputMaybe<Scalars['String']>;
-  labelName_gt?: InputMaybe<Scalars['String']>;
-  labelName_lt?: InputMaybe<Scalars['String']>;
-  labelName_gte?: InputMaybe<Scalars['String']>;
-  labelName_lte?: InputMaybe<Scalars['String']>;
-  labelName_in?: InputMaybe<Array<Scalars['String']>>;
-  labelName_not_in?: InputMaybe<Array<Scalars['String']>>;
-  labelName_contains?: InputMaybe<Scalars['String']>;
-  labelName_contains_nocase?: InputMaybe<Scalars['String']>;
-  labelName_not_contains?: InputMaybe<Scalars['String']>;
-  labelName_not_contains_nocase?: InputMaybe<Scalars['String']>;
-  labelName_starts_with?: InputMaybe<Scalars['String']>;
-  labelName_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  labelName_not_starts_with?: InputMaybe<Scalars['String']>;
-  labelName_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  labelName_ends_with?: InputMaybe<Scalars['String']>;
-  labelName_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  labelName_not_ends_with?: InputMaybe<Scalars['String']>;
-  labelName_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_gt?: InputMaybe<Scalars['String']>;
+  name_lt?: InputMaybe<Scalars['String']>;
+  name_gte?: InputMaybe<Scalars['String']>;
+  name_lte?: InputMaybe<Scalars['String']>;
+  name_in?: InputMaybe<Array<Scalars['String']>>;
+  name_not_in?: InputMaybe<Array<Scalars['String']>>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_contains_nocase?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  name_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  name_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  name_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  name_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
   and?: InputMaybe<Array<InputMaybe<WrappedDomain_filter>>>;
@@ -4088,17 +4453,23 @@ export type WrappedDomain_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'expiryDate'
   | 'fuses'
   | 'owner'
   | 'owner__id'
-  | 'labelName';
+  | 'name';
 
 export type WrappedTransfer = DomainEvent & {
+  /** The unique identifier of the event */
   id: Scalars['ID'];
+  /** The domain name associated with the event */
   domain: Domain;
+  /** The block number at which the event occurred */
   blockNumber: Scalars['Int'];
+  /** The transaction hash of the transaction that triggered the event */
   transactionID: Scalars['Bytes'];
+  /** The account that owns the wrapped domain after the transfer */
   owner: Account;
 };
 
@@ -4188,6 +4559,7 @@ export type WrappedTransfer_orderBy =
   | 'domain__ttl'
   | 'domain__isMigrated'
   | 'domain__createdAt'
+  | 'domain__expiryDate'
   | 'blockNumber'
   | 'transactionID'
   | 'owner'
@@ -4200,6 +4572,8 @@ export type _Block_ = {
   number: Scalars['Int'];
   /** Integer representation of the timestamp stored in blocks for the chain */
   timestamp?: Maybe<Scalars['Int']>;
+  /** The hash of the parent block */
+  parentHash?: Maybe<Scalars['Bytes']>;
 };
 
 /** The type for the top-level _meta field */
@@ -4261,6 +4635,10 @@ export type _SubgraphErrorPolicy_ =
   fusesSet: InContextSdkMethod<Query['fusesSet'], QueryfusesSetArgs, MeshContext>,
   /** null **/
   fusesSets: InContextSdkMethod<Query['fusesSets'], QueryfusesSetsArgs, MeshContext>,
+  /** null **/
+  expiryExtended: InContextSdkMethod<Query['expiryExtended'], QueryexpiryExtendedArgs, MeshContext>,
+  /** null **/
+  expiryExtendeds: InContextSdkMethod<Query['expiryExtendeds'], QueryexpiryExtendedsArgs, MeshContext>,
   /** null **/
   registration: InContextSdkMethod<Query['registration'], QueryregistrationArgs, MeshContext>,
   /** null **/
@@ -4386,6 +4764,10 @@ export type _SubgraphErrorPolicy_ =
   fusesSet: InContextSdkMethod<Subscription['fusesSet'], SubscriptionfusesSetArgs, MeshContext>,
   /** null **/
   fusesSets: InContextSdkMethod<Subscription['fusesSets'], SubscriptionfusesSetsArgs, MeshContext>,
+  /** null **/
+  expiryExtended: InContextSdkMethod<Subscription['expiryExtended'], SubscriptionexpiryExtendedArgs, MeshContext>,
+  /** null **/
+  expiryExtendeds: InContextSdkMethod<Subscription['expiryExtendeds'], SubscriptionexpiryExtendedsArgs, MeshContext>,
   /** null **/
   registration: InContextSdkMethod<Subscription['registration'], SubscriptionregistrationArgs, MeshContext>,
   /** null **/
