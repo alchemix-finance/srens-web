@@ -136,6 +136,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Concatenation of block number and log ID",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -155,6 +160,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Used to derive relationships to Resolvers",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -174,6 +184,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event was emitted",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -193,6 +208,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the transaction in which the event was emitted",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -212,6 +232,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The content type of the ABI change",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "contentType"
@@ -1275,6 +1300,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier for the account",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -1294,6 +1324,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domains owned by the account",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domains"
@@ -1403,6 +1438,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The WrappedDomains owned by the account",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "wrappedDomains"
@@ -1509,6 +1549,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The Registrations made by the account",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "registrations"
@@ -1911,6 +1956,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Unique identifier for this event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -1930,6 +1980,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The resolver associated with this event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -1949,6 +2004,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which this event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -1968,6 +2028,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction ID for the transaction in which this event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -1987,6 +2052,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The new address associated with the resolver",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "addr"
@@ -3245,6 +3315,32 @@ const schemaAST = {
       "directives": []
     },
     {
+      "kind": "EnumTypeDefinition",
+      "name": {
+        "kind": "Name",
+        "value": "Aggregation_interval"
+      },
+      "values": [
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "hour"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "day"
+          },
+          "directives": []
+        }
+      ],
+      "directives": []
+    },
+    {
       "kind": "ObjectTypeDefinition",
       "name": {
         "kind": "Name",
@@ -3253,6 +3349,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Unique identifier for this event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -3272,6 +3373,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The resolver associated with this event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -3291,6 +3397,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -3310,6 +3421,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -3329,6 +3445,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The owner of the authorisation",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "owner"
@@ -3348,6 +3469,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The target of the authorisation",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "target"
@@ -3367,6 +3493,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Whether the authorisation was added or removed",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "isAuthorized"
@@ -4817,6 +4948,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Concatenation of block number and log ID",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -4836,6 +4972,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Used to derive relationships to Resolvers",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -4855,6 +4996,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number where the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -4874,6 +5020,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The ID of the transaction where the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -4893,6 +5044,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The new content hash for the domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "hash"
@@ -5986,6 +6142,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The namehash of the name",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -6005,6 +6166,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The human readable name, if known. Unknown portions replaced with hash in square brackets (eg, foo.[1234].eth)",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "name"
@@ -6021,6 +6187,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The human readable label name (imported from CSV), if known",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "labelName"
@@ -6037,6 +6208,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "keccak256(labelName)",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "labelhash"
@@ -6053,6 +6229,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The namehash (id) of the parent name",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "parent"
@@ -6069,6 +6250,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Can count domains from length of array",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "subdomains"
@@ -6178,6 +6364,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The number of subdomains",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "subdomainCount"
@@ -6197,6 +6388,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Address logged from current resolver, if any",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolvedAddress"
@@ -6213,25 +6409,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner"
+          "description": {
+            "kind": "StringValue",
+            "value": "The resolver that controls the domain's settings",
+            "block": true
           },
-          "arguments": [],
-          "type": {
-            "kind": "NonNullType",
-            "type": {
-              "kind": "NamedType",
-              "name": {
-                "kind": "Name",
-                "value": "Account"
-              }
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "FieldDefinition",
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -6248,6 +6430,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The time-to-live (TTL) value of the domain's records",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "ttl"
@@ -6264,6 +6451,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Indicates whether the domain has been migrated to a new registrar",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "isMigrated"
@@ -6283,6 +6475,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The time when the domain was created",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "createdAt"
@@ -6302,6 +6499,140 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The account that owns the domain",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "owner"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NonNullType",
+            "type": {
+              "kind": "NamedType",
+              "name": {
+                "kind": "Name",
+                "value": "Account"
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The account that owns the ERC721 NFT for the domain",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "registrant"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Account"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The account that owns the wrapped domain",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Account"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The expiry date for the domain, from either the registration, or the wrapped domain if PCC is burned",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The registration associated with the domain",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "registration"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Registration"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The wrapped domain associated with the domain",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "wrappedDomain"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "WrappedDomain"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The events associated with the domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "events"
@@ -6408,38 +6739,6 @@ const schemaAST = {
             }
           },
           "directives": []
-        },
-        {
-          "kind": "FieldDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "registration"
-          },
-          "arguments": [],
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "Registration"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "FieldDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "wrappedDomain"
-          },
-          "arguments": [],
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "WrappedDomain"
-            }
-          },
-          "directives": []
         }
       ],
       "interfaces": [],
@@ -6454,6 +6753,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -6473,6 +6777,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain name associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -6492,6 +6801,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -6511,6 +6825,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the transaction that triggered the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -7435,6 +7754,14 @@ const schemaAST = {
           "name": {
             "kind": "Name",
             "value": "domain__createdAt"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain__expiryDate"
           },
           "directives": []
         },
@@ -9187,333 +9514,6 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "owner"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_not"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_gt"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_lt"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_gte"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_lte"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_in"
-          },
-          "type": {
-            "kind": "ListType",
-            "type": {
-              "kind": "NonNullType",
-              "type": {
-                "kind": "NamedType",
-                "name": {
-                  "kind": "Name",
-                  "value": "String"
-                }
-              }
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_not_in"
-          },
-          "type": {
-            "kind": "ListType",
-            "type": {
-              "kind": "NonNullType",
-              "type": {
-                "kind": "NamedType",
-                "name": {
-                  "kind": "Name",
-                  "value": "String"
-                }
-              }
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_contains"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_contains_nocase"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_not_contains"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_not_contains_nocase"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_starts_with"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_starts_with_nocase"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_not_starts_with"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_not_starts_with_nocase"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_ends_with"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_ends_with_nocase"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_not_ends_with"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_not_ends_with_nocase"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner_"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "Account_filter"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
             "value": "resolver"
           },
           "type": {
@@ -10177,13 +10177,1111 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "events_"
+            "value": "owner"
           },
           "type": {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "DomainEvent_filter"
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_not"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_gt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_lt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_gte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_lte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "String"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_not_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "String"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_contains"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_contains_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_not_contains"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_not_contains_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_starts_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_starts_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_not_starts_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_not_starts_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_ends_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_ends_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_not_ends_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_not_ends_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner_"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Account_filter"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_not"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_gt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_lt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_gte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_lte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "String"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_not_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "String"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_contains"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_contains_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_not_contains"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_not_contains_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_starts_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_starts_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_not_starts_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_not_starts_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_ends_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_ends_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_not_ends_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_not_ends_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant_"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Account_filter"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_not"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_gt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_lt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_gte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_lte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "String"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_not_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "String"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_contains"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_contains_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_not_contains"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_not_contains_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_starts_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_starts_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_not_starts_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_not_starts_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_ends_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_ends_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_not_ends_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_not_ends_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner_"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Account_filter"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_not"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_gt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_lt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_gte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_lte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "BigInt"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_not_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "BigInt"
+                }
+              }
             }
           },
           "directives": []
@@ -10214,6 +11312,21 @@ const schemaAST = {
             "name": {
               "kind": "Name",
               "value": "WrappedDomain_filter"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "events_"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "DomainEvent_filter"
             }
           },
           "directives": []
@@ -10392,6 +11505,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "parent__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "subdomains"
           },
           "directives": []
@@ -10417,22 +11538,6 @@ const schemaAST = {
           "name": {
             "kind": "Name",
             "value": "resolvedAddress__id"
-          },
-          "directives": []
-        },
-        {
-          "kind": "EnumValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner"
-          },
-          "directives": []
-        },
-        {
-          "kind": "EnumValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "owner__id"
           },
           "directives": []
         },
@@ -10496,7 +11601,55 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "events"
+            "value": "owner"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "owner__id"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "registrant__id"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "wrappedOwner__id"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate"
           },
           "directives": []
         },
@@ -10584,7 +11737,15 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "wrappedDomain__labelName"
+            "value": "wrappedDomain__name"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "events"
           },
           "directives": []
         }
@@ -10595,11 +11756,16 @@ const schemaAST = {
       "kind": "ObjectTypeDefinition",
       "name": {
         "kind": "Name",
-        "value": "FusesSet"
+        "value": "ExpiryExtended"
       },
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -10619,6 +11785,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain name associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -10638,6 +11809,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -10657,6 +11833,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the transaction that triggered the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -10676,9 +11857,14 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The new expiry date associated with the domain after the extension event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
-            "value": "fuses"
+            "value": "expiryDate"
           },
           "arguments": [],
           "type": {
@@ -10692,12 +11878,1109 @@ const schemaAST = {
             }
           },
           "directives": []
-        },
+        }
+      ],
+      "interfaces": [
         {
-          "kind": "FieldDefinition",
+          "kind": "NamedType",
           "name": {
             "kind": "Name",
-            "value": "expiry"
+            "value": "DomainEvent"
+          }
+        }
+      ],
+      "directives": []
+    },
+    {
+      "kind": "InputObjectTypeDefinition",
+      "name": {
+        "kind": "Name",
+        "value": "ExpiryExtended_filter"
+      },
+      "fields": [
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "id"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "ID"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "id_not"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "ID"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "id_gt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "ID"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "id_lt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "ID"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "id_gte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "ID"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "id_lte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "ID"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "id_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "ID"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "id_not_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "ID"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_not"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_gt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_lt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_gte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_lte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "String"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_not_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "String"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_contains"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_contains_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_not_contains"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_not_contains_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_starts_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_starts_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_not_starts_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_not_starts_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_ends_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_ends_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_not_ends_with"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_not_ends_with_nocase"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain_"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Domain_filter"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "blockNumber"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Int"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "blockNumber_not"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Int"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "blockNumber_gt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Int"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "blockNumber_lt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Int"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "blockNumber_gte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Int"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "blockNumber_lte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Int"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "blockNumber_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Int"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "blockNumber_not_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Int"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "transactionID"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Bytes"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "transactionID_not"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Bytes"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "transactionID_gt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Bytes"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "transactionID_lt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Bytes"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "transactionID_gte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Bytes"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "transactionID_lte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Bytes"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "transactionID_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Bytes"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "transactionID_not_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Bytes"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "transactionID_contains"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Bytes"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "transactionID_not_contains"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Bytes"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_not"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_gt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_lt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_gte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_lte"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BigInt"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "BigInt"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate_not_in"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "BigInt"
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Filter for the block changed event.",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "_change_block"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "BlockChangedFilter"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "and"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NamedType",
+              "name": {
+                "kind": "Name",
+                "value": "ExpiryExtended_filter"
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "or"
+          },
+          "type": {
+            "kind": "ListType",
+            "type": {
+              "kind": "NamedType",
+              "name": {
+                "kind": "Name",
+                "value": "ExpiryExtended_filter"
+              }
+            }
+          },
+          "directives": []
+        }
+      ],
+      "directives": []
+    },
+    {
+      "kind": "EnumTypeDefinition",
+      "name": {
+        "kind": "Name",
+        "value": "ExpiryExtended_orderBy"
+      },
+      "values": [
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "id"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain__id"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain__name"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain__labelName"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain__labelhash"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain__subdomainCount"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain__ttl"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain__isMigrated"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain__createdAt"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "blockNumber"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "transactionID"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryDate"
+          },
+          "directives": []
+        }
+      ],
+      "directives": []
+    },
+    {
+      "kind": "ObjectTypeDefinition",
+      "name": {
+        "kind": "Name",
+        "value": "FusesSet"
+      },
+      "fields": [
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the event",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "id"
           },
           "arguments": [],
           "type": {
@@ -10706,7 +12989,103 @@ const schemaAST = {
               "kind": "NamedType",
               "name": {
                 "kind": "Name",
-                "value": "BigInt"
+                "value": "ID"
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain name associated with the event",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "domain"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NonNullType",
+            "type": {
+              "kind": "NamedType",
+              "name": {
+                "kind": "Name",
+                "value": "Domain"
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event occurred",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "blockNumber"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NonNullType",
+            "type": {
+              "kind": "NamedType",
+              "name": {
+                "kind": "Name",
+                "value": "Int"
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the transaction that triggered the event",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "transactionID"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NonNullType",
+            "type": {
+              "kind": "NamedType",
+              "name": {
+                "kind": "Name",
+                "value": "Bytes"
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The number of fuses associated with the domain after the set event",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "fuses"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NonNullType",
+            "type": {
+              "kind": "NamedType",
+              "name": {
+                "kind": "Name",
+                "value": "Int"
               }
             }
           },
@@ -11494,7 +13873,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -11509,7 +13888,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -11524,7 +13903,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -11539,7 +13918,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -11554,7 +13933,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -11569,7 +13948,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -11588,7 +13967,7 @@ const schemaAST = {
                 "kind": "NamedType",
                 "name": {
                   "kind": "Name",
-                  "value": "BigInt"
+                  "value": "Int"
                 }
               }
             }
@@ -11609,139 +13988,7 @@ const schemaAST = {
                 "kind": "NamedType",
                 "name": {
                   "kind": "Name",
-                  "value": "BigInt"
-                }
-              }
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "expiry"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "BigInt"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "expiry_not"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "BigInt"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "expiry_gt"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "BigInt"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "expiry_lt"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "BigInt"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "expiry_gte"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "BigInt"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "expiry_lte"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "BigInt"
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "expiry_in"
-          },
-          "type": {
-            "kind": "ListType",
-            "type": {
-              "kind": "NonNullType",
-              "type": {
-                "kind": "NamedType",
-                "name": {
-                  "kind": "Name",
-                  "value": "BigInt"
-                }
-              }
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "expiry_not_in"
-          },
-          "type": {
-            "kind": "ListType",
-            "type": {
-              "kind": "NonNullType",
-              "type": {
-                "kind": "NamedType",
-                "name": {
-                  "kind": "Name",
-                  "value": "BigInt"
+                  "value": "Int"
                 }
               }
             }
@@ -11898,6 +14145,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "blockNumber"
           },
           "directives": []
@@ -11917,16 +14172,21 @@ const schemaAST = {
             "value": "fuses"
           },
           "directives": []
-        },
-        {
-          "kind": "EnumValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "expiry"
-          },
-          "directives": []
         }
       ],
+      "directives": []
+    },
+    {
+      "kind": "ScalarTypeDefinition",
+      "description": {
+        "kind": "StringValue",
+        "value": "8 bytes signed integer\n",
+        "block": true
+      },
+      "name": {
+        "kind": "Name",
+        "value": "Int8"
+      },
       "directives": []
     },
     {
@@ -11938,6 +14198,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Concatenation of block number and log ID",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -11957,6 +14222,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Used to derive relationships to Resolvers",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -11976,6 +14246,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number in which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -11995,6 +14270,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction ID for the transaction in which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -12014,6 +14294,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The ID of the EIP-1820 interface that was changed",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "interfaceID"
@@ -12033,6 +14318,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The address of the contract that implements the interface",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "implementer"
@@ -13296,6 +15586,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Unique identifier for the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -13315,6 +15610,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Resolver associated with this event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -13334,6 +15634,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Block number in which this event was emitted",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -13353,6 +15658,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Transaction ID in which this event was emitted",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -13372,6 +15682,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The coin type of the changed address",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "coinType"
@@ -13391,6 +15706,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The new address value for the given coin type",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "addr"
@@ -14624,6 +16944,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Concatenation of block number and log ID",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -14643,6 +16968,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Used to derive relationships to Resolvers",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -14662,6 +16992,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Block number where event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -14681,6 +17016,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Unique transaction ID where event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -14700,6 +17040,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "New ENS name value",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "name"
@@ -15943,6 +18288,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the NameRegistered event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -15962,6 +18312,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The registration associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "registration"
@@ -15981,6 +18336,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -16000,6 +18360,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction ID associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -16019,6 +18384,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The account that registered the name",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "registrant"
@@ -16038,6 +18408,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The expiry date of the registration",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "expiryDate"
@@ -17460,6 +19835,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the NameRenewed event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -17479,6 +19859,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The registration associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "registration"
@@ -17498,6 +19883,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -17517,6 +19907,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction ID associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -17536,6 +19931,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The new expiry date of the registration",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "expiryDate"
@@ -18615,6 +21015,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The ID of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -18634,6 +21039,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The registration associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "registration"
@@ -18653,6 +21063,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -18672,6 +21087,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction ID of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -18691,6 +21111,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The new owner of the domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "newOwner"
@@ -19973,6 +22398,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -19992,6 +22422,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain name associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -20011,6 +22446,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -20030,6 +22470,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the transaction that triggered the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -20049,6 +22494,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The account that owns the domain after it was unwrapped",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "owner"
@@ -21315,6 +23765,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "blockNumber"
           },
           "directives": []
@@ -21355,6 +23813,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the wrapped domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -21374,6 +23837,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain name associated with the wrapped domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -21393,6 +23861,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the wrapped domain was wrapped",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -21412,6 +23885,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the transaction that wrapped the domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -21431,25 +23909,32 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The human-readable name of the wrapped domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "name"
           },
           "arguments": [],
           "type": {
-            "kind": "NonNullType",
-            "type": {
-              "kind": "NamedType",
-              "name": {
-                "kind": "Name",
-                "value": "String"
-              }
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
             }
           },
           "directives": []
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The number of fuses associated with the wrapped domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "fuses"
@@ -21461,7 +23946,7 @@ const schemaAST = {
               "kind": "NamedType",
               "name": {
                 "kind": "Name",
-                "value": "BigInt"
+                "value": "Int"
               }
             }
           },
@@ -21469,6 +23954,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The account that owns the wrapped domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "owner"
@@ -21488,9 +23978,14 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The expiry date of the wrapped domain registration",
+            "block": true
+          },
           "name": {
             "kind": "Name",
-            "value": "expiry"
+            "value": "expiryDate"
           },
           "arguments": [],
           "type": {
@@ -22599,7 +25094,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -22614,7 +25109,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -22629,7 +25124,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -22644,7 +25139,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -22659,7 +25154,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -22674,7 +25169,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -22693,7 +25188,7 @@ const schemaAST = {
                 "kind": "NamedType",
                 "name": {
                   "kind": "Name",
-                  "value": "BigInt"
+                  "value": "Int"
                 }
               }
             }
@@ -22714,7 +25209,7 @@ const schemaAST = {
                 "kind": "NamedType",
                 "name": {
                   "kind": "Name",
-                  "value": "BigInt"
+                  "value": "Int"
                 }
               }
             }
@@ -23052,7 +25547,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "expiry"
+            "value": "expiryDate"
           },
           "type": {
             "kind": "NamedType",
@@ -23067,7 +25562,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "expiry_not"
+            "value": "expiryDate_not"
           },
           "type": {
             "kind": "NamedType",
@@ -23082,7 +25577,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "expiry_gt"
+            "value": "expiryDate_gt"
           },
           "type": {
             "kind": "NamedType",
@@ -23097,7 +25592,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "expiry_lt"
+            "value": "expiryDate_lt"
           },
           "type": {
             "kind": "NamedType",
@@ -23112,7 +25607,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "expiry_gte"
+            "value": "expiryDate_gte"
           },
           "type": {
             "kind": "NamedType",
@@ -23127,7 +25622,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "expiry_lte"
+            "value": "expiryDate_lte"
           },
           "type": {
             "kind": "NamedType",
@@ -23142,7 +25637,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "expiry_in"
+            "value": "expiryDate_in"
           },
           "type": {
             "kind": "ListType",
@@ -23163,7 +25658,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "expiry_not_in"
+            "value": "expiryDate_not_in"
           },
           "type": {
             "kind": "ListType",
@@ -23330,6 +25825,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "blockNumber"
           },
           "directives": []
@@ -23378,7 +25881,7 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "expiry"
+            "value": "expiryDate"
           },
           "directives": []
         }
@@ -23394,6 +25897,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -23413,6 +25921,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The parent domain of the domain name associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "parentDomain"
@@ -23432,6 +25945,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain name associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -23451,6 +25969,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -23470,6 +25993,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the transaction that triggered the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -23489,6 +26017,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The new account that owns the domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "owner"
@@ -25082,6 +27615,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "parentDomain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "domain"
           },
           "directives": []
@@ -25154,6 +27695,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "blockNumber"
           },
           "directives": []
@@ -25194,6 +27743,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -25213,6 +27767,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain name associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -25232,6 +27791,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -25251,6 +27815,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the transaction that triggered the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -25270,6 +27839,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The new resolver contract address associated with the domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -26536,6 +29110,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "blockNumber"
           },
           "directives": []
@@ -26592,6 +29174,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -26611,6 +29198,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain name associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -26630,6 +29222,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -26649,6 +29246,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the transaction that triggered the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -26668,6 +29270,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The new TTL value (in seconds) associated with the domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "ttl"
@@ -27739,6 +30346,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "blockNumber"
           },
           "directives": []
@@ -27802,6 +30417,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Concatenation of block number and log ID",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -27821,6 +30441,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Used to derive relationships to Resolvers",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -27840,6 +30465,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Block number of the Ethereum block where the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -27859,6 +30489,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Transaction hash of the Ethereum transaction where the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -27878,6 +30513,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The x-coordinate of the new public key",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "x"
@@ -27897,6 +30537,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The y-coordinate of the new public key",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "y"
@@ -31293,6 +33938,244 @@ const schemaAST = {
                   "name": {
                     "kind": "Name",
                     "value": "FusesSet"
+                  }
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryExtended"
+          },
+          "arguments": [
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "id"
+              },
+              "type": {
+                "kind": "NonNullType",
+                "type": {
+                  "kind": "NamedType",
+                  "name": {
+                    "kind": "Name",
+                    "value": "ID"
+                  }
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "description": {
+                "kind": "StringValue",
+                "value": "The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.",
+                "block": true
+              },
+              "name": {
+                "kind": "Name",
+                "value": "block"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Block_height"
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "description": {
+                "kind": "StringValue",
+                "value": "Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.",
+                "block": true
+              },
+              "name": {
+                "kind": "Name",
+                "value": "subgraphError"
+              },
+              "type": {
+                "kind": "NonNullType",
+                "type": {
+                  "kind": "NamedType",
+                  "name": {
+                    "kind": "Name",
+                    "value": "_SubgraphErrorPolicy_"
+                  }
+                }
+              },
+              "defaultValue": {
+                "kind": "EnumValue",
+                "value": "deny"
+              },
+              "directives": []
+            }
+          ],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "ExpiryExtended"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryExtendeds"
+          },
+          "arguments": [
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "skip"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Int"
+                }
+              },
+              "defaultValue": {
+                "kind": "IntValue",
+                "value": "0"
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "first"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Int"
+                }
+              },
+              "defaultValue": {
+                "kind": "IntValue",
+                "value": "100"
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "orderBy"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "ExpiryExtended_orderBy"
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "orderDirection"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "OrderDirection"
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "where"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "ExpiryExtended_filter"
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "description": {
+                "kind": "StringValue",
+                "value": "The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.",
+                "block": true
+              },
+              "name": {
+                "kind": "Name",
+                "value": "block"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Block_height"
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "description": {
+                "kind": "StringValue",
+                "value": "Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.",
+                "block": true
+              },
+              "name": {
+                "kind": "Name",
+                "value": "subgraphError"
+              },
+              "type": {
+                "kind": "NonNullType",
+                "type": {
+                  "kind": "NamedType",
+                  "name": {
+                    "kind": "Name",
+                    "value": "_SubgraphErrorPolicy_"
+                  }
+                }
+              },
+              "defaultValue": {
+                "kind": "EnumValue",
+                "value": "deny"
+              },
+              "directives": []
+            }
+          ],
+          "type": {
+            "kind": "NonNullType",
+            "type": {
+              "kind": "ListType",
+              "type": {
+                "kind": "NonNullType",
+                "type": {
+                  "kind": "NamedType",
+                  "name": {
+                    "kind": "Name",
+                    "value": "ExpiryExtended"
                   }
                 }
               }
@@ -36110,6 +38993,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the registration",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -36129,6 +39017,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain name associated with the registration",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -36148,6 +39041,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The registration date of the domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "registrationDate"
@@ -36167,6 +39065,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The expiry date of the domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "expiryDate"
@@ -36186,6 +39089,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The cost associated with the domain registration",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "cost"
@@ -36202,6 +39110,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The account that registered the domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "registrant"
@@ -36221,6 +39134,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The human-readable label name associated with the domain registration",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "labelName"
@@ -36237,6 +39155,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The events associated with the domain registration",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "events"
@@ -36357,6 +39280,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the registration event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -36376,6 +39304,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The registration associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "registration"
@@ -36395,6 +39328,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -36414,6 +39352,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction ID associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -39002,6 +41945,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "registrationDate"
           },
           "directives": []
@@ -39066,6 +42017,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier for this resolver, which is a concatenation of the resolver address and the domain namehash",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -39085,6 +42041,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain that this resolver is associated with",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -39101,6 +42062,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The address of the resolver contract",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "address"
@@ -39120,6 +42086,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The current value of the 'addr' record for this resolver, as determined by the associated events",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "addr"
@@ -39136,6 +42107,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The content hash for this resolver, in binary format",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "contentHash"
@@ -39152,6 +42128,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The set of observed text record keys for this resolver",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "texts"
@@ -39174,6 +42155,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The set of observed SLIP-44 coin types for this resolver",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "coinTypes"
@@ -39196,6 +42182,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The events associated with this resolver",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "events"
@@ -39316,6 +42307,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Concatenation of block number and log ID",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -39335,6 +42331,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Used to derive relationships to Resolvers",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -39354,6 +42355,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number that the event occurred on",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -39373,6 +42379,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -41813,6 +44824,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "address"
           },
           "directives": []
@@ -44010,6 +47029,244 @@ const schemaAST = {
                   "name": {
                     "kind": "Name",
                     "value": "FusesSet"
+                  }
+                }
+              }
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryExtended"
+          },
+          "arguments": [
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "id"
+              },
+              "type": {
+                "kind": "NonNullType",
+                "type": {
+                  "kind": "NamedType",
+                  "name": {
+                    "kind": "Name",
+                    "value": "ID"
+                  }
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "description": {
+                "kind": "StringValue",
+                "value": "The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.",
+                "block": true
+              },
+              "name": {
+                "kind": "Name",
+                "value": "block"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Block_height"
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "description": {
+                "kind": "StringValue",
+                "value": "Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.",
+                "block": true
+              },
+              "name": {
+                "kind": "Name",
+                "value": "subgraphError"
+              },
+              "type": {
+                "kind": "NonNullType",
+                "type": {
+                  "kind": "NamedType",
+                  "name": {
+                    "kind": "Name",
+                    "value": "_SubgraphErrorPolicy_"
+                  }
+                }
+              },
+              "defaultValue": {
+                "kind": "EnumValue",
+                "value": "deny"
+              },
+              "directives": []
+            }
+          ],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "ExpiryExtended"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "expiryExtendeds"
+          },
+          "arguments": [
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "skip"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Int"
+                }
+              },
+              "defaultValue": {
+                "kind": "IntValue",
+                "value": "0"
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "first"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Int"
+                }
+              },
+              "defaultValue": {
+                "kind": "IntValue",
+                "value": "100"
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "orderBy"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "ExpiryExtended_orderBy"
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "orderDirection"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "OrderDirection"
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "where"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "ExpiryExtended_filter"
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "description": {
+                "kind": "StringValue",
+                "value": "The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.",
+                "block": true
+              },
+              "name": {
+                "kind": "Name",
+                "value": "block"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Block_height"
+                }
+              },
+              "directives": []
+            },
+            {
+              "kind": "InputValueDefinition",
+              "description": {
+                "kind": "StringValue",
+                "value": "Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.",
+                "block": true
+              },
+              "name": {
+                "kind": "Name",
+                "value": "subgraphError"
+              },
+              "type": {
+                "kind": "NonNullType",
+                "type": {
+                  "kind": "NamedType",
+                  "name": {
+                    "kind": "Name",
+                    "value": "_SubgraphErrorPolicy_"
+                  }
+                }
+              },
+              "defaultValue": {
+                "kind": "EnumValue",
+                "value": "deny"
+              },
+              "directives": []
+            }
+          ],
+          "type": {
+            "kind": "NonNullType",
+            "type": {
+              "kind": "ListType",
+              "type": {
+                "kind": "NonNullType",
+                "type": {
+                  "kind": "NamedType",
+                  "name": {
+                    "kind": "Name",
+                    "value": "ExpiryExtended"
                   }
                 }
               }
@@ -48827,6 +52084,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Concatenation of block number and log ID",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -48846,6 +52108,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Used to derive relationships to Resolvers",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -48865,6 +52132,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Block number of the Ethereum block in which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -48884,6 +52156,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Hash of the Ethereum transaction in which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -48903,6 +52180,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The key of the text record that was changed",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "key"
@@ -48922,6 +52204,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The new value of the text record that was changed",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "value"
@@ -50474,6 +53761,19 @@ const schemaAST = {
       "directives": []
     },
     {
+      "kind": "ScalarTypeDefinition",
+      "description": {
+        "kind": "StringValue",
+        "value": "A string representation of microseconds UNIX timestamp (16 digits)\n",
+        "block": true
+      },
+      "name": {
+        "kind": "Name",
+        "value": "Timestamp"
+      },
+      "directives": []
+    },
+    {
       "kind": "ObjectTypeDefinition",
       "name": {
         "kind": "Name",
@@ -50482,6 +53782,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -50501,6 +53806,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain name associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -50520,6 +53830,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -50539,6 +53854,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the transaction that triggered the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -50558,6 +53878,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The account that owns the domain after the transfer",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "owner"
@@ -51824,6 +55149,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "blockNumber"
           },
           "directives": []
@@ -51864,6 +55197,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "Unique identifier for this event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -51883,6 +55221,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The resolver associated with this event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "resolver"
@@ -51902,6 +55245,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -51921,6 +55269,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -51940,6 +55293,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The new version number of the resolver",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "version"
@@ -53003,6 +56361,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "unique identifier for each instance of the WrappedDomain entity",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -53022,6 +56385,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain that is wrapped by this WrappedDomain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -53041,6 +56409,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The expiry date of the wrapped domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "expiryDate"
@@ -53060,6 +56433,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The number of fuses remaining on the wrapped domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "fuses"
@@ -53071,7 +56449,7 @@ const schemaAST = {
               "kind": "NamedType",
               "name": {
                 "kind": "Name",
-                "value": "BigInt"
+                "value": "Int"
               }
             }
           },
@@ -53079,6 +56457,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The account that owns this WrappedDomain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "owner"
@@ -53098,9 +56481,14 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The name of the wrapped domain",
+            "block": true
+          },
           "name": {
             "kind": "Name",
-            "value": "labelName"
+            "value": "name"
           },
           "arguments": [],
           "type": {
@@ -53724,7 +57112,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -53739,7 +57127,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -53754,7 +57142,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -53769,7 +57157,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -53784,7 +57172,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -53799,7 +57187,7 @@ const schemaAST = {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "BigInt"
+              "value": "Int"
             }
           },
           "directives": []
@@ -53818,7 +57206,7 @@ const schemaAST = {
                 "kind": "NamedType",
                 "name": {
                   "kind": "Name",
-                  "value": "BigInt"
+                  "value": "Int"
                 }
               }
             }
@@ -53839,7 +57227,7 @@ const schemaAST = {
                 "kind": "NamedType",
                 "name": {
                   "kind": "Name",
-                  "value": "BigInt"
+                  "value": "Int"
                 }
               }
             }
@@ -54177,7 +57565,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName"
+            "value": "name"
           },
           "type": {
             "kind": "NamedType",
@@ -54192,7 +57580,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_not"
+            "value": "name_not"
           },
           "type": {
             "kind": "NamedType",
@@ -54207,7 +57595,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_gt"
+            "value": "name_gt"
           },
           "type": {
             "kind": "NamedType",
@@ -54222,7 +57610,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_lt"
+            "value": "name_lt"
           },
           "type": {
             "kind": "NamedType",
@@ -54237,7 +57625,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_gte"
+            "value": "name_gte"
           },
           "type": {
             "kind": "NamedType",
@@ -54252,7 +57640,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_lte"
+            "value": "name_lte"
           },
           "type": {
             "kind": "NamedType",
@@ -54267,7 +57655,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_in"
+            "value": "name_in"
           },
           "type": {
             "kind": "ListType",
@@ -54288,7 +57676,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_not_in"
+            "value": "name_not_in"
           },
           "type": {
             "kind": "ListType",
@@ -54309,7 +57697,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_contains"
+            "value": "name_contains"
           },
           "type": {
             "kind": "NamedType",
@@ -54324,7 +57712,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_contains_nocase"
+            "value": "name_contains_nocase"
           },
           "type": {
             "kind": "NamedType",
@@ -54339,7 +57727,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_not_contains"
+            "value": "name_not_contains"
           },
           "type": {
             "kind": "NamedType",
@@ -54354,7 +57742,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_not_contains_nocase"
+            "value": "name_not_contains_nocase"
           },
           "type": {
             "kind": "NamedType",
@@ -54369,7 +57757,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_starts_with"
+            "value": "name_starts_with"
           },
           "type": {
             "kind": "NamedType",
@@ -54384,7 +57772,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_starts_with_nocase"
+            "value": "name_starts_with_nocase"
           },
           "type": {
             "kind": "NamedType",
@@ -54399,7 +57787,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_not_starts_with"
+            "value": "name_not_starts_with"
           },
           "type": {
             "kind": "NamedType",
@@ -54414,7 +57802,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_not_starts_with_nocase"
+            "value": "name_not_starts_with_nocase"
           },
           "type": {
             "kind": "NamedType",
@@ -54429,7 +57817,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_ends_with"
+            "value": "name_ends_with"
           },
           "type": {
             "kind": "NamedType",
@@ -54444,7 +57832,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_ends_with_nocase"
+            "value": "name_ends_with_nocase"
           },
           "type": {
             "kind": "NamedType",
@@ -54459,7 +57847,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_not_ends_with"
+            "value": "name_not_ends_with"
           },
           "type": {
             "kind": "NamedType",
@@ -54474,7 +57862,7 @@ const schemaAST = {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName_not_ends_with_nocase"
+            "value": "name_not_ends_with_nocase"
           },
           "type": {
             "kind": "NamedType",
@@ -54635,6 +58023,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "expiryDate"
           },
           "directives": []
@@ -54667,7 +58063,7 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "labelName"
+            "value": "name"
           },
           "directives": []
         }
@@ -54683,6 +58079,11 @@ const schemaAST = {
       "fields": [
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The unique identifier of the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "id"
@@ -54702,6 +58103,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The domain name associated with the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "domain"
@@ -54721,6 +58127,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The block number at which the event occurred",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "blockNumber"
@@ -54740,6 +58151,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The transaction hash of the transaction that triggered the event",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "transactionID"
@@ -54759,6 +58175,11 @@ const schemaAST = {
         },
         {
           "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The account that owns the wrapped domain after the transfer",
+            "block": true
+          },
           "name": {
             "kind": "Name",
             "value": "owner"
@@ -56025,6 +59446,14 @@ const schemaAST = {
           "kind": "EnumValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "domain__expiryDate"
+          },
+          "directives": []
+        },
+        {
+          "kind": "EnumValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "blockNumber"
           },
           "directives": []
@@ -56125,6 +59554,27 @@ const schemaAST = {
             "name": {
               "kind": "Name",
               "value": "Int"
+            }
+          },
+          "directives": []
+        },
+        {
+          "kind": "FieldDefinition",
+          "description": {
+            "kind": "StringValue",
+            "value": "The hash of the parent block",
+            "block": true
+          },
+          "name": {
+            "kind": "Name",
+            "value": "parentHash"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "Bytes"
             }
           },
           "directives": []
