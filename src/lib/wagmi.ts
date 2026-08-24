@@ -10,8 +10,9 @@ export const config = getDefaultConfig({
   chains: [mainnet, ...(isFoundryEnabled ? [foundry] : [])],
   transports: {
     [mainnet.id]: fallback([
-      http(`https://mainnet.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`),
-      http("https://eth.llamarpc.com"),
+      http("https://base-rpc.publicnode.com"),
+      http("https://base.drpc.org"),
+      http("https://mainnet.base.org"),
     ]),
   },
 })
