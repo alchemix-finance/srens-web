@@ -10,9 +10,8 @@ export const config = getDefaultConfig({
   chains: [mainnet, ...(isFoundryEnabled ? [foundry] : [])],
   transports: {
     [mainnet.id]: fallback([
-      http("https://base-rpc.publicnode.com"),
-      http("https://base.drpc.org"),
-      http("https://mainnet.base.org"),
+      http("https://ethereum-rpc.publicnode.com"),
+      http("https://eth.drpc.org"),
     ]),
   },
 })
